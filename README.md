@@ -1,2 +1,3 @@
-# tupya
+# TupYa 
+
 Proyecto de universidad. 
