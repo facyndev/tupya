@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio | TupYa</title>
+    <meta name="description" content="TupYa es un servicio de pedidos de comida rápida.">
+    <link rel="stylesheet" href="./styles/style.css">
+    
+</head>
+<body class="h-screen bg-[linear-gradient(180deg,var(--bg-color)_0%,var(--bg-color)_50%,var(--low-tone-color)_100%)]">
+    <header class="w-full py-2">
+        <nav class="w-[90%] mx-auto flex items-center px-4 justify-between rounded-2xl bg-[var(--primary-color)]">
+            <div class="flex items-center gap-4">
+                <a href="./index.html">
+                    <img 
+                        src="./assets/LogoTUP.png" 
+                        alt="TupYa Logo"
+                        width="100"
+                        height="100"
+                    >
+                </a>
+                <ul class="flex items-center gap-4 text-[var(--text-color)]">
+                    <li>
+                        <a href="./index.html">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="./templates/products.html">Productos</a>
+                    </li>
+                </ul>
+            </div>
+            <iconify-icon class="text-[var(--text-color)] cursor-pointer" icon="solar:bag-3-linear" width="32" height="32"></iconify-icon>
+        </nav>
+    </header>
+    <main class="w-[90%] mx-auto h-[calc(100vh-100px)] flex items-center">
+        <section class="flex items-center justify-between">
+            <div class="w-1/2 flex flex-col gap-4">
+                <h1 class="text-4xl">El <strong class="text-[var(--primary-color)]">antojo</strong>, al instante. Lo que querés, cuando querés!</h1>
+                <h2 class="text-2xl">En <strong>TupYa</strong> hacemos que pedir tu comida favorita sea rápido y sencillo. Con un clic, elegís, pedís y disfrutás, sin complicaciones.</h2>
+                <div class="flex items-center gap-5">
+                    <a href="./templates/products.html">
+                        <button class="cursor-pointer py-3 px-4 rounded-xl text-[var(--text-color)] bg-[var(--primary-color)]">Pedir</button>
+                    </a>
+                    <a href="./templates/pedidos.html">
+                        <button class="cursor-pointer py-3 px-4 rounded-xl text-[var(--primary-color)] bg-[var(--low-tone-color)]">Ver mis pedidos</button>
+                    </a>
+                </div>
+            </div>
+            <div class="images"></div>
+        </section>
+    </main>
+</body>
+<script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<script src="./scripts/main.js"></script>
+</html>
+
