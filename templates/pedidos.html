@@ -1,59 +1,77 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pedidos</title>
     <link rel="stylesheet" href="../styles/style.css">
 </head>
-    <header class="w-full py-2">
-        <nav class="w-[90%] mx-auto flex items-center px-4 justify-between rounded-2xl bg-[var(--primary-color)]">
-            <div class="flex items-center gap-4">
-              <a href="../index.html">
-                <img 
-                    src="../assets/LogoTUP.png" 
-                    alt="TupYa Logo"
-                    width="100"
-                    height="100"
-                >
-              </a>
-                <ul class="flex items-center gap-4 text-[var(--text-color)]">
-                    <li>
-                        <a href="../index.html">Inicio</a>
-                    </li>
-                    <li>
-                        <a href="./products.html">Productos</a>
-                    </li>
-                </ul>
-            </div>
-                    <a href="./pedidos.html">
-          <iconify-icon
-            class="text-[var(--text-color)] cursor-pointer"
-            icon="solar:bag-3-linear"
-            width="32"
-            height="32"
-          ></iconify-icon>
+<header class="w-full py-2">
+    <nav class="w-[90%] mx-auto flex items-center px-4 justify-between rounded-2xl bg-[var(--primary-color)]">
+        <div class="flex items-center gap-4">
+            <a href="../index.html">
+                <img src="../assets/LogoTUP.png" alt="TupYa Logo" width="100" height="100">
+            </a>
+            <ul class="flex items-center gap-4 text-[var(--text-color)]">
+                <li>
+                    <a href="../index.html">Inicio</a>
+                </li>
+                <li>
+                    <a href="./products.html">Productos</a>
+                </li>
+            </ul>
+        </div>
+        <a href="./pedidos.html">
+            <iconify-icon class="text-[var(--text-color)] cursor-pointer" icon="solar:bag-3-linear" width="32"
+                height="32"></iconify-icon>
         </a>
-        </nav>
-    </header>
-    <main>
-        <section class="flex-col p-3 m-8">
-            <h1 class="text-4xl">Pedidos</h1>
-            <div class="flex gap-2 align-middle">
-                <iconify-icon icon="mage:filter" width="24" height="24"></iconify-icon>
-                <h3 class="text-xl text-center">Filtros</h3>
-                <div class="flex gap-5 align-middle">
-                    <span class="px-5 py-2 ml-3 rounded-full bg-[var(--primary-color)]">Entregados</span>
-                    <span class="px-5 py-2  ml-3 rounded-full">En proceso</span>
-                    <span class="px-5 py-2  ml-3 rounded-full">Cancelados</span>
+    </nav>
+</header>
+<main class="w-[90%]">
+    <section class="flex-col m-8">
+        <h1 class="text-4xl px-4 py-2">Pedidos</h1>
+        <div class="flex gap-2 align-middle">
+            <iconify-icon icon="mage:filter" width="24" height="24"></iconify-icon>
+            <h3 class="text-xl text-center">Filtros</h3>
+
+            <div class="flex gap-3 align-middle">
+                <button class="px-5 py-2 ml-3 rounded-full bg-gray-200 cursor-pointer" data-filter="en_proceso" id="filterButton">En proceso</button>
+                <button class="px-5 py-2 ml-3 rounded-full bg-gray-200 cursor-pointer" data-filter="entregados" id="filterButton">Entregados</button>
+                <button class="px-5 py-2 ml-3 rounded-full bg-gray-200 cursor-pointer" data-filter="cancelados" id="filterButton">Cancelados</button>
+            </div>
+        </div>
+        <!-- Ey haog lo del filter y te lo voy expxlicando, o lo termino de hacer y despues te explico  como quieras, no yo porque a lo mejor vos queres seguir haciendo, para no cortarte  es algo q no tengo idea, hacelo si queres, yo voy haciendo otra cosa-->
+        <!-- Dale despues te lo exxplico, pero posta no es para nada dificil okok -->
+        <section class="flex-col px-4 py-3 w-[100%] h-screen flex rounded-xl gap-3 bg-green-200">
+            <div class="w-[100%] h-35 bg-white-200 flex items-center py-3 px-5 gap-4">
+                <img src="../assets/home/1.png" alt="" style="width: 100px; height: 100px;">
+                <div class="flex-col">
+                    <p class="text-xl">Nombre de la comida</p>
+                    <p class="text-sm text-gray-500">En Proceso</p>
                 </div>
+                <button
+                    class="bg-[var(--low-tone-color)] rounded-2xl p-3 text-[var(--primary-color)] cursor-pointer">Cancelar</button>
+            </div>
+            <div class="w-[100%] h-35 bg-white-200 flex items-center py-3 px-5 gap-4">
+                <img src="../assets/home/1.png" alt="" style="width: 100px; height: 100px;">
+                <div class="flex-col">
+                    <p class="text-xl">Nombre de la comida</p>
+                    <p class="text-sm text-gray-500">En Proceso</p>
+                </div>
+                <button
+                    class="bg-[var(--low-tone-color)] rounded-2xl p-3 text-[var(--primary-color)] cursor-pointer">Cancelar</button>
             </div>
 
         </section>
-    </main>
+    </section>
+</main>
+
 <body>
-      <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-<script src="../scripts/main.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="../scripts/filter.js"></script>
+
 </body>
+
 </html>
