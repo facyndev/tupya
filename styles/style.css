@@ -4,6 +4,7 @@
   --primary-color: #f37676;
   --low-tone-color: #fccccc;
   --text-color: #fff;
+  --bg-filtro-pedidos:#EFEDED;
 
   /* Utilizamos la fuente Poppins, en caso de que no pueda cargarse utilizamos la que tiene el usuario en su sistema por defecto */
   font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
