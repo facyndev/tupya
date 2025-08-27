@@ -7,69 +7,92 @@
     <title>Pedidos</title>
     <link rel="stylesheet" href="../styles/style.css">
 </head>
-<header class="w-full py-2">
-    <nav class="w-[90%] mx-auto flex items-center px-4 justify-between rounded-2xl bg-[var(--primary-color)]">
-        <div class="flex items-center gap-4">
-            <a href="../index.html">
-                <img src="../assets/LogoTUP.png" alt="TupYa Logo" width="100" height="100">
-            </a>
-            <ul class="flex items-center gap-4 text-[var(--text-color)]">
-                <li>
-                    <a href="../index.html">Inicio</a>
-                </li>
-                <li>
-                    <a href="./products.html">Productos</a>
-                </li>
-            </ul>
-        </div>
-        <a href="./pedidos.html">
-            <iconify-icon class="text-[var(--text-color)] cursor-pointer" icon="solar:bag-3-linear" width="32"
-                height="32"></iconify-icon>
-        </a>
-    </nav>
-</header>
-<main class="w-[90%]">
-    <section class="flex-col m-8">
-        <h1 class="text-4xl px-4 py-2">Pedidos</h1>
-        <div class="flex gap-2 align-middle px-4 py-3 m-4">
-            <iconify-icon icon="mage:filter" width="24" height="24"></iconify-icon>
-            <h3 class="text-xl text-center">Filtros</h3>
-
-            <div class="flex gap-3 align-middle">
-                <button class="px-5 py-2 ml-3 rounded-full bg-gray-200 cursor-pointer" data-filter="en_proceso" id="filterButton">En proceso</button>
-                <button class="px-5 py-2 ml-3 rounded-full bg-gray-200 cursor-pointer" data-filter="entregados" id="filterButton">Entregados</button>
-                <button class="px-5 py-2 ml-3 rounded-full bg-gray-200 cursor-pointer" data-filter="cancelados" id="filterButton">Cancelados</button>
-            </div>
-        </div>
-        <section class="flex-col px-4 py-3 w-full h-screen flex rounded-2xl gap-3 bg-white-900 border border-zinc-400">
-            <div class="w-[100%] h-35 bg-white-200 flex items-center py-3 px-5 gap-4">
-                <img id="imagen_comida_carrito" src="../assets/home/1.png" alt="" style="width: 100px; height: 100px;">
-                <div class="flex-col">
-                    <p id="nombre_comida_carrito"class="text-xl">Nombre de la comida</p>
-                    <p id="estado_comida_carrito" class="text-sm text-gray-500">En Proceso</p>
-                </div>
-                <button
-                    class="ml-auto bg-[var(--low-tone-color)] rounded-2xl m-3 p-3 text-[var(--primary-color)] cursor-pointer hover:bg-[var(--primary-color)] hover:text-[var(--text-color)]">Cancelar</button>
-            </div>
-            <div class="w-[100%] h-35 bg-white-200 flex items-center py-3 px-5 gap-4">
-                <img src="../assets/home/1.png" alt="" style="width: 100px; height: 100px;">
-                <div class="flex-col">
-                    <p class="text-xl">Nombre de la comida</p>
-                    <p class="text-sm text-gray-500">En Proceso</p>
-                </div>
-                <button
-                    class="ml-auto bg-[var(--low-tone-color)] rounded-2xl m-3 p-3 text-[var(--primary-color)] cursor-pointer hover:bg-[var(--primary-color)] hover:text-[var(--text-color)]">Cancelar</button>
-            </div>
-
-        </section>
-    </section>
-</main>
 
 <body>
+    <header class="w-full py-2">
+        <nav class="w-[90%] mx-auto flex items-center px-4 justify-between rounded-2xl bg-[var(--primary-color)]">
+            <div class="flex items-center gap-4">
+                <a href="../index.html">
+                    <img src="../assets/LogoTUP.png" alt="TupYa Logo" width="100" height="100">
+                </a>
+                <ul class="flex items-center gap-4 text-[var(--text-color)]">
+                    <li>
+                        <a href="../index.html">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="./products.html">Productos</a>
+                    </li>
+                </ul>
+            </div>
+            <a href="./pedidos.html">
+                <iconify-icon class="text-[var(--text-color)] cursor-pointer" icon="solar:bag-3-linear" width="32"
+                    height="32"></iconify-icon>
+            </a>
+        </nav>
+    </header>
+    <main class="w-[90%] mx-auto">
+        <section class="flex flex-col gap-4 my-4">
+            <div>
+                <h1 class="text-4xl mb-2">Tus pedidos</h1>
+                <p class="text-gray-700">En esta sección podras ver el historial de pedidos, hasta incluso los mas
+                    recientes.</p>
+            </div>
+            <div class="flex gap-2 items-center">
+                <iconify-icon icon="mage:filter" width="24" height="24"></iconify-icon>
+                <h3 class="text-xl text-center">Filtros</h3>
+                <div class="flex gap-3 items-center">
+                    <button class="px-5 py-2 text-sm rounded-full bg-[var(--bg-orders)] cursor-pointer transition-all"
+                        data-filter="en_proceso" id="filterButton">En proceso</button>
+                    <button class="px-5 py-2 text-sm rounded-full bg-[var(--bg-orders)] cursor-pointer transition-all"
+                        data-filter="entregados" id="filterButton">Entregados</button>
+                    <button class="px-5 py-2 text-sm rounded-full bg-[var(--bg-orders)] cursor-pointer transition-all"
+                        data-filter="cancelados" id="filterButton">Cancelados</button>
+                </div>
+            </div>
+            <div
+                class="flex-col w-full flex rounded-2xl gap-3 border border-[var(--borders-color)] bg-[var(--bg-orders)]">
+                <div class="w-full flex items-center justify-between py-3 px-5">
+                    <div class="flex items-center gap-2">
+                        <img id="imagen_comida_carrito" src="../assets/home/1.png" alt="Nombre de la comida" width="64"
+                            height="64">
+                        <div class="flex-col justify-between">
+                            <h3 id="nombre_comida_carrito" class="text-base">Burrito x 2</h3>
+                            <span id="estado_comida_carrito" class="text-sm text-gray-600">En Proceso</span>
+                        </div>
+                    </div>
+                    <button
+                        class="cursor-pointer py-3 px-4 rounded-xl text-[var(--primary-color)] bg-[var(--low-tone-color)] transition-all hover:bg-[var(--primary-color)] hover:text-[var(--text-color)]">Cancelar</button>
+                </div>
+                <div class="w-full flex items-center justify-between py-3 px-5">
+                    <div class="flex items-center gap-2">
+                        <img id="imagen_comida_carrito" src="../assets/home/1.png" alt="Nombre de la comida" width="64"
+                            height="64">
+                        <div class="flex-col justify-between">
+                            <h3 id="nombre_comida_carrito" class="text-base">Empanadas x 3</h3>
+                            <span id="estado_comida_carrito" class="text-sm text-red-400">Cancelado</span>
+                        </div>
+                    </div>
+                    <button
+                        class="cursor-not-allowed py-3 px-4 rounded-xl text-[var(--primary-color)] bg-[var(--low-tone-color)] disabled:opacity-70" disabled>Cancelar</button>
+                </div>
+                <div class="w-full flex items-center justify-between py-3 px-5">
+                    <div class="flex items-center gap-2">
+                        <img id="imagen_comida_carrito" src="../assets/home/1.png" alt="Nombre de la comida" width="64"
+                            height="64">
+                        <div class="flex-col justify-between">
+                            <h3 id="nombre_comida_carrito" class="text-base">Empanadas x 3</h3>
+                            <span id="estado_comida_carrito" class="text-sm text-green-600">Entregado</span>
+                        </div>
+                    </div>
+                    <button
+                        class="cursor-not-allowed py-3 px-4 rounded-xl text-[var(--primary-color)] bg-[var(--low-tone-color)] disabled:opacity-70" disabled>Cancelar</button>
+                </div>
+            </div>
+        </section>
+    </main>
     <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="../scripts/filter.js"></script>
-
 </body>
 
 </html>

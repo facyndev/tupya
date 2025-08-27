@@ -38,10 +38,10 @@ function updateFilters() {
 
     filterButtonsElements.forEach((el) => {
         if(actualValues.includes(el.attributes["data-filter"].value)) {
-            el.classList.remove('bg-gray-200', 'text-black')
+            el.classList.remove('bg-[var(--bg-orders)]', 'text-black')
             el.classList.add('bg-[var(--primary-color)]', 'text-[var(--text-color)]')
         } else {
-            el.classList.add('bg-gray-200', 'text-black')
+            el.classList.add('bg-[var(--bg-orders)]', 'text-black')
             el.classList.remove('bg-[var(--primary-color)]', 'text-[var(--text-color)]')
         }
     })
