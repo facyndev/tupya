@@ -6,6 +6,7 @@
   --text-color: #fff;
   --bg-orders:#ede7e7;
   --borders-color: #AFA3A3;
+  --text-filter-productos: #625D5D;
 
   /* Utilizamos la fuente Poppins, en caso de que no pueda cargarse utilizamos la que tiene el usuario en su sistema por defecto */
   font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
