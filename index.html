@@ -14,33 +14,67 @@
     class="h-screen bg-[linear-gradient(180deg,var(--bg-color)_0%,var(--bg-color)_50%,var(--low-tone-color)_100%)]"
   >
     <header class="w-full py-2">
-        <nav class="w-[90%] mx-auto flex items-center px-4 justify-between rounded-2xl bg-[var(--primary-color)]">
-            <div class="flex items-center gap-4">
-                <a href="../index.html">
-                    <img src="../assets/images/LogoTUP.png" alt="TupYa Logo" width="100" height="100">
-                </a>
-                <ul class="flex items-center gap-4 text-white">
-                    <li>
-                        <a href="/">Inicio</a>
-                    </li>
-                    <li>
-                        <a href="./pages/products.html">Productos</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="flex items-center gap-2">
-                <a href="./pages/pedidos.html">
-                    <iconify-icon class="text-white cursor-pointer" icon="solar:bag-3-linear" width="32"
-                        height="32"></iconify-icon>
-                </a>
-                <button id="btn_theme"></button>
-            </div>
-        </nav>
+      <nav
+        class="w-[90%] mx-auto flex items-center px-4 justify-between rounded-2xl bg-[var(--primary-color)]"
+      >
+        <div class="flex items-center gap-4">
+          <a href="../index.html">
+            <img
+              src="../assets/images/LogoTUP.png"
+              alt="TupYa Logo"
+              width="100"
+              height="100"
+            />
+          </a>
+          <ul class="flex items-center gap-4 text-white">
+            <li>
+              <a href="/">Inicio</a>
+            </li>
+            <li>
+              <a href="./pages/products.html">Productos</a>
+            </li>
+          </ul>
+        </div>
+        <div class="flex items-center gap-2">
+          <a
+            class="h-12 flex items-center justify-center py-2"
+            href="./pages/pedidos.html"
+          >
+            <iconify-icon
+              class="text-white cursor-pointer"
+              icon="solar:bag-3-linear"
+              width="32"
+              height="32"
+            ></iconify-icon>
+          </a>
+          <button
+            class="h-12 flex items-center justify-center cursor-pointer py-2 px-4 rounded-full bg-[var(--low-tone-color)]"
+            id="btn_theme"
+          >
+            <iconify-icon
+              class="text-white transition-all duration-400"
+              icon="tdesign:moon-filled"
+              width="22"
+              height="22"
+              id="icon_dark"
+            ></iconify-icon>
+            <iconify-icon
+              class="text-white opacity-0 invisible transition-all duration-400"
+              icon="bi:sun-fill"
+              width="22"
+              height="22"
+              id="icon_light"
+            ></iconify-icon>
+          </button>
+        </div>
+      </nav>
     </header>
     <main
       class="w-[90%] mx-auto h-[calc(100vh-89px)] flex items-center relative overflow-hidden"
     >
-      <section class="w-full flex flex-col gap-4 items-center mb-40 text-[var(--text-color)]">
+      <section
+        class="w-full flex flex-col gap-4 items-center mb-40 text-[var(--text-color)]"
+      >
         <h1 class="text-4xl text-center">
           El <strong class="text-[var(--primary-color)]">antojo</strong>, al
           instante. Lo que querés, cuando querés!

@@ -1,100 +1,181 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Productos</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Productos</title>
-  <link rel="stylesheet" href="../styles/style.css" />
-</head>
-
-<body>
-  <header class="w-full py-2">
-    <nav class="w-[90%] mx-auto flex items-center px-4 justify-between rounded-2xl bg-[var(--primary-color)]">
-      <div class="flex items-center gap-4">
-        <a href="../index.html">
-          <img src="../assets/images/LogoTUP.png" alt="TupYa Logo" width="100" height="100">
-        </a>
-        <ul class="flex items-center gap-4 text-white">
-          <li>
-            <a href="/">Inicio</a>
-          </li>
-          <li>
-            <a href="./products.html">Productos</a>
-          </li>
-        </ul>
+  <body>
+    <header class="w-full py-2">
+      <nav
+        class="w-[90%] mx-auto flex items-center px-4 justify-between rounded-2xl bg-[var(--primary-color)]"
+      >
+        <div class="flex items-center gap-4">
+          <a href="../index.html">
+            <img
+              src="../assets/images/LogoTUP.png"
+              alt="TupYa Logo"
+              width="100"
+              height="100"
+            />
+          </a>
+          <ul class="flex items-center gap-4 text-white">
+            <li>
+              <a href="/">Inicio</a>
+            </li>
+            <li>
+              <a href="./products.html">Productos</a>
+            </li>
+          </ul>
+        </div>
+        <div class="flex items-center gap-2">
+          <a
+            class="h-12 flex items-center justify-center py-2"
+            href="./pedidos.html"
+          >
+            <iconify-icon
+              class="text-white cursor-pointer"
+              icon="solar:bag-3-linear"
+              width="32"
+              height="32"
+            ></iconify-icon>
+          </a>
+          <button
+            class="h-12 flex items-center justify-center cursor-pointer py-2 px-4 rounded-full bg-[var(--low-tone-color)]"
+            id="btn_theme"
+          >
+            <iconify-icon
+              class="text-white transition-all duration-400"
+              icon="tdesign:moon-filled"
+              width="22"
+              height="22"
+              id="icon_dark"
+            ></iconify-icon>
+            <iconify-icon
+              class="text-white opacity-0 invisible transition-all duration-400"
+              icon="bi:sun-fill"
+              width="22"
+              height="22"
+              id="icon_light"
+            ></iconify-icon>
+          </button>
+        </div>
+      </nav>
+    </header>
+    <main class="w-[90%] mx-auto">
+      <div class="w-full my-4">
+        <section
+          class="w-[20%] h-[calc(100vh-120px)] fixed left-[5%] flex-col gap-10 bg-[var(--bg-color-secondary)] p-4 rounded-xl text-[var(--text-color)]"
+        >
+          <div class="flex flex-col gap-2">
+            <h1 class="text-2xl">Comidas</h1>
+            <div class="flex items-center">
+              <iconify-icon
+                class="text-[var(--text-color-secondary)]"
+                icon="iconamoon:search-bold"
+                width="24"
+                height="24"
+              ></iconify-icon>
+              <input
+                class="p-4 outline-none"
+                type="text"
+                placeholder="Busqueda..."
+                id="search_product"
+              />
+            </div>
+          </div>
+          <span class="text-[var(--text-color-secondary)] text-sm"
+            >Categorias</span
+          >
+          <div class="flex items-start flex-col gap-2 mb-6 mt-2">
+            <div class="flex items-center gap-2 select-none">
+              <input
+                class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all checked:bg-[var(--primary-color)]"
+                type="checkbox"
+                id="breakfast"
+                data-filter="category"
+                data-filter-value="breakfast"
+              />
+              <label class="cursor-pointer hover:opacity-70" for="breakfast"
+                >Desayuno</label
+              >
+            </div>
+            <div class="flex items-center gap-2 select-none">
+              <input
+                class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all checked:bg-[var(--primary-color)]"
+                type="checkbox"
+                id="vegan"
+                data-filter="category"
+                data-filter-value="vegan"
+              />
+              <label class="cursor-pointer hover:opacity-70" for="vegan"
+                >Vegano</label
+              >
+            </div>
+            <div class="flex items-center gap-2 select-none">
+              <input
+                class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all checked:bg-[var(--primary-color)]"
+                type="checkbox"
+                id="vegetarian"
+                data-filter="category"
+                data-filter-value="vegetarian"
+              />
+              <label class="cursor-pointer hover:opacity-70" for="vegetarian"
+                >Vegetariano</label
+              >
+            </div>
+          </div>
+          <span class="text-[var(--text-color-secondary)] text-sm">Region</span>
+          <div class="flex items-start flex-col gap-2 mt-2">
+            <div class="flex items-center gap-2 select-none">
+              <input
+                class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all checked:bg-[var(--primary-color)]"
+                type="checkbox"
+                id="argentina"
+                data-filter="area"
+                data-filter-value="argentina"
+              />
+              <label class="cursor-pointer hover:opacity-70" for="argentina"
+                >Argentina</label
+              >
+            </div>
+            <div class="flex items-center gap-2 select-none">
+              <input
+                class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all checked:bg-[var(--primary-color)]"
+                type="checkbox"
+                id="chile"
+                data-filter="area"
+                data-filter-value="chile"
+              />
+              <label class="cursor-pointer hover:opacity-70" for="chile"
+                >Chile</label
+              >
+            </div>
+            <div class="flex items-center gap-2 select-none">
+              <input
+                class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all checked:bg-[var(--primary-color)]"
+                type="checkbox"
+                id="españa"
+                data-filter="area"
+                data-filter-value="españa"
+              />
+              <label class="cursor-pointer hover:opacity-70" for="españa"
+                >España</label
+              >
+            </div>
+          </div>
+        </section>
+        <section
+          class="flex flex-col-reverse items-center gap-2 ml-[25%]"
+          id="products_list"
+        ></section>
       </div>
-      <div class="flex items-center gap-2">
-        <a href="./pedidos.html">
-          <iconify-icon class="text-white cursor-pointer" icon="solar:bag-3-linear" width="32"
-            height="32"></iconify-icon>
-        </a>
-        <button id="btn_theme"></button>
-      </div>
-    </nav>
-  </header>
-  <main class="w-[90%] mx-auto">
-    <div class="w-full my-4">
-      <section
-        class="w-[20%] h-[calc(100vh-120px)] fixed left-[5%] flex-col gap-10 bg-[var(--bg-color-secondary)] p-4 rounded-xl text-[var(--text-color)]">
-        <div class="flex flex-col gap-2">
-          <h1 class="text-2xl">Comidas</h1>
-          <div class="flex items-center">
-            <iconify-icon class="text-[var(--text-color-secondary)]" icon="iconamoon:search-bold" width="24"
-              height="24"></iconify-icon>
-            <input class="p-4 outline-none" type="text" placeholder="Busqueda..." id="search_product">
-          </div>
-        </div>
-        <span class="text-[var(--text-color-secondary)] text-sm">Categorias</span>
-        <div class="flex items-start flex-col gap-2 mb-6 mt-2">
-          <div class="flex items-center gap-2 select-none">
-            <input
-              class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all checked:bg-[var(--primary-color)]"
-              type="checkbox" id="breakfast" data-filter="category" data-filter-value="breakfast">
-            <label class="cursor-pointer hover:opacity-70" for="breakfast">Desayuno</label>
-          </div>
-          <div class="flex items-center gap-2 select-none">
-            <input
-              class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all checked:bg-[var(--primary-color)]"
-              type="checkbox" id="vegan" data-filter="category" data-filter-value="vegan">
-            <label class="cursor-pointer hover:opacity-70" for="vegan">Vegano</label>
-          </div>
-          <div class="flex items-center gap-2 select-none">
-            <input
-              class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all checked:bg-[var(--primary-color)]"
-              type="checkbox" id="vegetarian" data-filter="category" data-filter-value="vegetarian">
-            <label class="cursor-pointer hover:opacity-70" for="vegetarian">Vegetariano</label>
-          </div>
-        </div>
-        <span class="text-[var(--text-color-secondary)] text-sm">Region</span>
-        <div class="flex items-start flex-col gap-2 mt-2">
-          <div class="flex items-center gap-2 select-none">
-            <input
-              class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all checked:bg-[var(--primary-color)]"
-              type="checkbox" id="argentina" data-filter="area" data-filter-value="argentina">
-            <label class="cursor-pointer hover:opacity-70" for="argentina">Argentina</label>
-          </div>
-          <div class="flex items-center gap-2 select-none">
-            <input
-              class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all checked:bg-[var(--primary-color)]"
-              type="checkbox" id="chile" data-filter="area" data-filter-value="chile">
-            <label class="cursor-pointer hover:opacity-70" for="chile">Chile</label>
-          </div>
-          <div class="flex items-center gap-2 select-none">
-            <input
-              class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all checked:bg-[var(--primary-color)]"
-              type="checkbox" id="españa" data-filter="area" data-filter-value="españa">
-            <label class="cursor-pointer hover:opacity-70" for="españa">Vegetariano</label>
-          </div>
-        </div>
-      </section>
-      <section class="flex flex-col-reverse gap-2 ml-[25%]" id="products_list"></section>
-    </div>
-  </main>
-</body>
-<script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-<script src="../js/main.js"></script>
-<script src="../js/products.js"></script>
-
+    </main>
+  </body>
+  <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/products.js"></script>
 </html>
