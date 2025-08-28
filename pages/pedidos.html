@@ -15,7 +15,7 @@
                 <a href="../index.html">
                     <img src="../assets/images/LogoTUP.png" alt="TupYa Logo" width="100" height="100">
                 </a>
-                <ul class="flex items-center gap-4 text-[var(--text-color)]">
+                <ul class="flex items-center gap-4 text-white">
                     <li>
                         <a href="../index.html">Inicio</a>
                     </li>
@@ -24,40 +24,43 @@
                     </li>
                 </ul>
             </div>
-            <a href="./pedidos.html">
-                <iconify-icon class="text-[var(--text-color)] cursor-pointer" icon="solar:bag-3-linear" width="32"
-                    height="32"></iconify-icon>
-            </a>
+            <div class="flex items-center gap-2">
+                <a href="./pedidos.html">
+                    <iconify-icon class="text-white cursor-pointer" icon="solar:bag-3-linear" width="32"
+                        height="32"></iconify-icon>
+                </a>
+                <button id="btn_theme"></button>
+            </div>
         </nav>
     </header>
     <main class="w-[90%] mx-auto">
         <section class="flex flex-col gap-4 my-4">
             <div>
-                <h1 class="text-4xl mb-2">Tus pedidos</h1>
-                <p class="text-gray-700">En esta sección podras ver el historial de pedidos, hasta incluso los mas
+                <h1 class="text-4xl mb-2 text-[var(--text-color)]">Tus pedidos</h1>
+                <p class="text-[var(--text-color-secondary)]">En esta sección podras ver el historial de pedidos, hasta incluso los mas
                     recientes.</p>
             </div>
-            <div class="flex gap-2 items-center">
+            <div class="flex gap-2 items-center text-[var(--text-color)]">
                 <iconify-icon icon="mage:filter" width="24" height="24"></iconify-icon>
                 <h3 class="text-xl text-center">Filtros</h3>
                 <div class="flex gap-3 items-center">
-                    <button class="px-5 py-2 text-sm rounded-full bg-[var(--bg-orders)] cursor-pointer transition-all"
+                    <button class="px-5 py-2 text-sm rounded-full bg-[var(--bg-color-secondary)] cursor-pointer transition-all"
                         data-filter="en_proceso" id="filterButton">En proceso</button>
-                    <button class="px-5 py-2 text-sm rounded-full bg-[var(--bg-orders)] cursor-pointer transition-all"
+                    <button class="px-5 py-2 text-sm rounded-full bg-[var(--bg-color-secondary)] cursor-pointer transition-all"
                         data-filter="entregados" id="filterButton">Entregados</button>
-                    <button class="px-5 py-2 text-sm rounded-full bg-[var(--bg-orders)] cursor-pointer transition-all"
+                    <button class="px-5 py-2 text-sm rounded-full bg-[var(--bg-color-secondary)] cursor-pointer transition-all"
                         data-filter="cancelados" id="filterButton">Cancelados</button>
                 </div>
             </div>
             <div
-                class="flex-col w-full flex rounded-2xl gap-3 border border-[var(--borders-color)] bg-[var(--bg-orders)]">
+                class="flex-col w-full flex rounded-2xl gap-3 bg-[var(--bg-color-secondary)] text-[var(--text-color)]">
                 <div class="w-full flex items-center justify-between py-3 px-5">
                     <div class="flex items-center gap-2">
-                        <img id="imagen_comida_carrito" src="../assets/images/1.png" alt="Nombre de la comida" width="64"
+                        <img src="../assets/images/1.png" alt="Nombre de la comida" width="64"
                             height="64">
                         <div class="flex-col justify-between">
-                            <h3 id="nombre_comida_carrito" class="text-base">Burrito x 2</h3>
-                            <span id="estado_comida_carrito" class="text-sm text-gray-600">En Proceso</span>
+                            <h3 class="text-base">Burrito x 2</h3>
+                            <span class="text-sm text-[var(--text-color-secondary)]">En Proceso</span>
                         </div>
                     </div>
                     <button
@@ -65,11 +68,11 @@
                 </div>
                 <div class="w-full flex items-center justify-between py-3 px-5">
                     <div class="flex items-center gap-2">
-                        <img id="imagen_comida_carrito" src="../assets/home/1.png" alt="Nombre de la comida" width="64"
+                        <img src="../assets/images/2.png" alt="Nombre de la comida" width="64"
                             height="64">
                         <div class="flex-col justify-between">
-                            <h3 id="nombre_comida_carrito" class="text-base">Empanadas x 3</h3>
-                            <span id="estado_comida_carrito" class="text-sm text-red-400">Cancelado</span>
+                            <h3 class="text-base">Empanadas x 3</h3>
+                            <span class="text-sm text-red-400">Cancelado</span>
                         </div>
                     </div>
                     <button
@@ -77,11 +80,11 @@
                 </div>
                 <div class="w-full flex items-center justify-between py-3 px-5">
                     <div class="flex items-center gap-2">
-                        <img id="imagen_comida_carrito" src="../assets/home/1.png" alt="Nombre de la comida" width="64"
+                        <img src="../assets/images/4.png" alt="Nombre de la comida" width="64"
                             height="64">
                         <div class="flex-col justify-between">
-                            <h3 id="nombre_comida_carrito" class="text-base">Empanadas x 3</h3>
-                            <span id="estado_comida_carrito" class="text-sm text-green-600">Entregado</span>
+                            <h3 class="text-base">Empanadas x 3</h3>
+                            <span class="text-sm text-green-600">Entregado</span>
                         </div>
                     </div>
                     <button
@@ -92,7 +95,8 @@
     </main>
     <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="../scripts/filter.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/filter.js"></script>
 </body>
 
 </html>

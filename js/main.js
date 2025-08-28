@@ -1,5 +1,7 @@
 const htmlElement = document.getElementsByTagName("html")[0];
-const btnTheme = document.getElementById('btnTheme');
+const btnThemeElement = document.getElementById('btn_theme');
+
+btnThemeElement.innerHTML = '<iconify-icon class="text-white cursor-pointer" icon="tdesign:moon-filled" width="24" height="24"></iconify-icon>'
 
 // Cuando el contenido de nuestra pagina termine de cargar, ejecutamos lo que este dentro.
 window.addEventListener('DOMContentLoaded', () => {
@@ -12,7 +14,7 @@ window.addEventListener('DOMContentLoaded', () => {
 })
 
 // Cambiar el tema mediante el boton
-btnTheme.addEventListener('click', () => {
+btnThemeElement.addEventListener('click', () => {
     const themeModeItem = localStorage.getItem('theme');
     // En caso de no tener el item, lo creamos en el LocalStorage y añadimos el atributo a la etiqueta HTML
     if(!themeModeItem) {
