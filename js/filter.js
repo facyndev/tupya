@@ -9,14 +9,8 @@ const filterButtonsElements = document.querySelectorAll("#filterButton");
 filterButtonsElements.forEach((el) => {
   // A cada elemento la añadimos un evento
   el.addEventListener("click", (e) => {
-    const filterType = e.currentTarget.attributes["data-filter"];
-    const actualValues = params.getAll("filter");
-
-    if (actualValues.includes(filterType.value)) {
-      params.delete("filter", filterType.value);
-    } else {
-      params.append("filter", filterType.value);
-    }
+    const filterType = e.currentTarget.getAttribute("data-filter");
+    params.getAll("filter").includes(filterType) ? params.delete("filter", filterType) : params.append("filter", filterType)
 
     updateFilters();
   });

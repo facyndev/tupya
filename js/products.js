@@ -1,10 +1,14 @@
 const productsListElement = document.getElementById("products_list");
 const searchInputElement = document.getElementById("search_product");
+const filterElements = document.querySelectorAll('input[filter]');
+
+const pageUrl = new URL(window.location);
 const params = new URLSearchParams(window.location.search);
 
+// Filtrador de busqueda
 searchInputElement.addEventListener("input", (e) => {
   params.set("search", e.currentTarget.value);
-  updateSearch(params.get("search"));
+  updateFilters(params.get("search"));
 });
 
 let foods = [];
@@ -23,19 +27,19 @@ async function getFoods() {
 window.addEventListener("DOMContentLoaded", async () => {
   await getFoods();
 
-  updateSearch(params.get("search") ?? "");
+  updateFilters(params.get("search") ?? "");
 });
 
-async function updateSearch(search) {
+async function updateFilters(search, filter) {
   // Si search existe, entonces reemplazamos
   history.replaceState(null, "", `?search=${params.get("search") ?? ""}`);
+  searchInputElement.value = search;
 
-  searchInputElement.value = search
-
+  // Comidas filtradas
   const filteredFoods =
     search != ""
       ? foods.filter((food) =>
-          food.strMeal.toLowerCase().includes(search.toLowerCase())
+          food.strMeal.toLowerCase().includes(search.toLowerCase()) 
         )
       : foods;
 
