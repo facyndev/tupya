@@ -30,6 +30,8 @@ async function updateSearch(search) {
   // Si search existe, entonces reemplazamos
   history.replaceState(null, "", `?search=${params.get("search") ?? ""}`);
 
+  searchInputElement.value = search
+
   const filteredFoods =
     search != ""
       ? foods.filter((food) =>
