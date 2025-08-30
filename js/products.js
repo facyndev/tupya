@@ -8,8 +8,20 @@ const params = new URLSearchParams(window.location.search);
 // Filtrador de busqueda
 searchInputElement.addEventListener("input", (e) => {
   params.set("search", e.currentTarget.value);
-  updateFilters(params.get("search"));
+  updateFilters();
 });
+
+// Filtrador por categorias y regiones
+filterElements.forEach((el) => {
+  el.addEventListener('click', (e) => {
+    const currentElement = e.currentTarget;
+    const filterType = currentElement.getAttribute("data-filter-type");
+    const filterValue = currentElement.getAttribute("data-filter-value"); 
+    !params.getAll(filterType).includes(filterValue) ? params.append(filterType, filterValue) : params.delete(filterType, filterValue);
+
+    updateFilters()
+  })
+})
 
 let foods = [];
 
@@ -27,21 +39,40 @@ async function getFoods() {
 window.addEventListener("DOMContentLoaded", async () => {
   await getFoods();
 
-  updateFilters(params.get("search") ?? "");
+  updateFilters();
 });
 
-async function updateFilters(search, filter) {
-  // Si search existe, entonces reemplazamos
-  history.replaceState(null, "", `?search=${params.get("search") ?? ""}`);
+async function updateFilters() {
+  pageUrl.search = params.toString()
+
+  const search = params.get("search") ?? "";
+  const categories = params.getAll('category')
+  const areas = params.getAll('area')
+  
+  // Reemplazar URL
+  history.replaceState(null, "", pageUrl.search);
+
+  // Mantener el HTML actualizado
   searchInputElement.value = search;
+  filterElements.forEach((el) => {
+    if(categories.includes(el.getAttribute('data-filter-value'))) {
+      el.checked = true;
+    }
+  })
 
   // Comidas filtradas
-  const filteredFoods =
-    search != ""
-      ? foods.filter((food) =>
-          food.strMeal.toLowerCase().includes(search.toLowerCase()) 
-        )
-      : foods;
+  const filteredFoods = foods.filter((food) => {
+    /**
+     * Para cada filtro se verifica si su contenido existe, de lo contrario devuelve un estado en true para que continue con el siguiente.
+     * Es decir, si el filtro esta activo (tiene contenido) realizamos su logica correspondiente, de lo contrario devolvemos verdadero.
+     * Por ultimo hacemos un logica de los 3, donde 3 verdaderos signifca que el elemento del array es quien se filtrara.
+     */
+    const matchSearch = search ? food.strMeal.toLowerCase().includes(search.toLowerCase()) : true;
+    const matchCategory = categories.length ? categories.includes(food.strCategory.toLowerCase()) : true;
+    const matchArea = areas.length ? areas.includes(food.strArea.toLowerCase()) : true;
+
+    return matchSearch && matchCategory && matchArea;
+  });
 
   if (filteredFoods.length === 0) {
     productsListElement.innerHTML =
@@ -85,8 +116,16 @@ async function updateFilters(search, filter) {
                         </div>
                         </div>
                     </div>
-                    <button class="rounded-xl bg-[var(--low-tone-color)] px-10 text-white hover:cursor-pointer"><iconify-icon
-                        class="text-[var(--primary-color)]" icon="line-md:plus" width="30" height="30"></iconify-icon><button>
+                    <button 
+                        class="rounded-xl bg-[var(--low-tone-color)] px-10 text-white hover:cursor-pointer"
+                      >
+                        <iconify-icon
+                              class="text-[var(--primary-color)]" icon="line-md:plus" 
+                              width="30" 
+                              height="30"
+                            >
+                            </iconify-icon>
+                    </button>
                 </div>
         `;
     });
