@@ -108,13 +108,13 @@ function updateFilters(foods) {
                 </div>
                 <div class="flex items-center gap-2">
                     ${ingredients
-          .map(
-            (ingredient) =>
-              `<img src="https://www.themealdb.com/images/ingredients/${encodeURIComponent(
-                ingredient
-              )}.png" class="rounded-xl grayscale" alt="${ingredient}" width="24" height="24" title="${ingredient}"/>`
-          )
-          .join("")}
+                        .map(
+                          (ingredient) =>
+                            `<img src="https://www.themealdb.com/images/ingredients/${encodeURIComponent(
+                              ingredient
+                            )}.png" class="rounded-xl grayscale" alt="${ingredient}" width="24" height="24" title="${ingredient}"/>`
+                        )
+                        .join("")}
                 </div>
                 </div>
             </a>

@@ -12,6 +12,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 function getFood(id) {
     return new Promise(async (resolve, reject) => {
+        // Verificamos que la ID sea un valor numerico
         if(typeof id != Number) reject("La ID debe ser un valor numerico.")
         const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)  
         if(response.ok) {
