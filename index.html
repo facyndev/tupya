@@ -140,6 +140,20 @@
     </main>
   </body>
   <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Configuraciones de Tailwind CSS -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extends: {},
+        screens: {
+          desktop: "1200px",
+          laptop: "992px",
+          tablet: "768px",
+          mobile: "480px"
+        }
+      }
+    }
+  </script>
   <script src="./js/main.js"></script>
 </html>
