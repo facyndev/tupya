@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
+    <meta name="description" content="Variedad de comidas que tenemos a disposicion en todo momento. Lo que queres, cuando queres.">
+    <link rel="stylesheet" href="../styles/style.css" />
+    <title>Productos | TupYa</title>
+  </head>
+
+  <body>
+    <header class="w-full py-2">
+      <nav
+        class="w-[90%] mx-auto flex items-center px-4 justify-between rounded-2xl bg-[var(--primary-color)]"
+      >
+        <div class="flex items-center gap-4">
+          <a href="../index.html">
+            <img
+              src="../assets/images/LogoTUP.png"
+              alt="TupYa Logo"
+              width="100"
+              height="100"
+            />
+          </a>
+          <ul class="flex items-center gap-4 text-white">
+            <li>
+              <a href="/">Inicio</a>
+            </li>
+            <li>
+              <a href="./products.html">Productos</a>
+            </li>
+          </ul>
+        </div>
+        <div class="flex items-center gap-2">
+          <a
+            class="h-12 flex items-center justify-center py-2"
+            href="./pedidos.html"
+          >
+            <iconify-icon
+              class="text-white cursor-pointer"
+              icon="solar:bag-3-linear"
+              width="32"
+              height="32"
+            ></iconify-icon>
+          </a>
+          <button
+            class="h-12 flex items-center justify-center cursor-pointer py-2 px-4 rounded-full bg-[var(--low-tone-color)]"
+            id="btn_theme"
+          >
+            <iconify-icon
+              class="text-white transition-all duration-400"
+              icon="tdesign:moon-filled"
+              width="22"
+              height="22"
+              id="icon_dark"
+            ></iconify-icon>
+            <iconify-icon
+              class="text-white opacity-0 invisible transition-all duration-400"
+              icon="bi:sun-fill"
+              width="22"
+              height="22"
+              id="icon_light"
+            ></iconify-icon>
+          </button>
+        </div>
+      </nav>
+    </header>
+    <main class="w-[90%] mx-auto">
+        <section class="flex items-start gap-8" id="product_details">
+            <img class="rounded-2xl" src="https://www.themealdb.com/images/media/meals/1550441275.jpg" alt="Foto de la comida" width="512" height="512">
+            <div class="flex flex-col gap-4">
+                <h1 class="text-5xl">Taco</h1>
+                <p class="text-sm text-[var(--text-color)]">
+                    <span class="inline">Tag 3 &bull;</span>
+                    <span class="inline">Tag 2 &bull;</span>
+                    <span class="inline">Tag 3</span>
+                </p>
+                <div class="h-[1px] w-full bg-[var(--borders-color)]"></div>
+                <p class="text-[var(--text-color-secondary)] text-md mb-12">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam labore ipsam vitae nesciunt, quia tempora eligendi dignissimos fugit repudiandae voluptate ipsa, hic perferendis architecto nulla? Voluptate possimus delectus recusandae sint similique numquam nemo consequuntur aliquam maxime reiciendis explicabo quos, eum eos voluptatibus repellendus culpa, reprehenderit vero sunt! Sapiente, necessitatibus nemo.</p>
+
+                <iframe class="w-full rounded-2xl" width="560" height="315" src="https://www.youtube.com/watch?v=QqdzDCWS4gQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </section>
+    </main>
+  </body>
+  <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/product.js"></script>
+</html>
