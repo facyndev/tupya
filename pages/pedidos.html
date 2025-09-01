@@ -1,195 +1,155 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
-    <meta name="description" content="Listado de pedidos actuales en sus diferentes estados.">
-    <link rel="stylesheet" href="../styles/style.css" />
-    <title>Pedidos | TupYa</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
+  <meta name="description" content="Listado de pedidos actuales en sus diferentes estados.">
+  <link rel="stylesheet" href="../styles/style.css" />
+  <title>Pedidos | TupYa</title>
+</head>
+<body>
+  <header class="w-full py-2">
+    <nav class="w-[90%] mx-auto flex items-center px-4 justify-between rounded-2xl bg-[var(--primary-color)]">
+      <div class="flex items-center gap-4">
+        <a href="../index.html">
+          <img src="../assets/images/LogoTUP.png" alt="TupYa Logo" width="100" height="100" />
+        </a>
+        <ul class="flex items-center gap-4 text-white hidden mobile:flex">
+          <li>
+            <a href="/">Inicio</a>
+          </li>
+          <li>
+            <a href="./pages/products.html">Productos</a>
+          </li>
+        </ul>
+      </div>
+      <div class="flex items-center gap-2">
+        <a class="h-12 flex items-center justify-center py-2" href="./pages/pedidos.html">
+          <iconify-icon class="text-white cursor-pointer" icon="solar:bag-3-linear" width="32"
+            height="32"></iconify-icon>
+        </a>
+        <button
+          class="h-12 flex items-center justify-center cursor-pointer py-2 px-4 rounded-full bg-[var(--low-tone-color)] max-mobile:hidden"
+          id="btn_theme">
+          <iconify-icon class="text-white transition-all duration-400" icon="tdesign:moon-filled" width="22" height="22"
+            id="icon_dark"></iconify-icon>
+          <iconify-icon class="text-white opacity-0 invisible transition-all duration-400" icon="bi:sun-fill" width="22"
+            height="22" id="icon_light"></iconify-icon>
+        </button>
+        <button class="h-12 flex items-center justify-center py-2 text-white mobile:hidden" id="btn_menu">
+          <iconify-icon icon="ci:hamburger-md" width="32" height="32"></iconify-icon>
+        </button>
+      </div>
 
-  <body>
-    <header class="w-full py-2">
-      <nav
-        class="w-[90%] mx-auto flex items-center px-4 justify-between rounded-2xl bg-[var(--primary-color)]"
-      >
-        <div class="flex items-center gap-4">
-          <a href="../index.html">
-            <img
-              src="../assets/images/LogoTUP.png"
-              alt="TupYa Logo"
-              width="100"
-              height="100"
-            />
-          </a>
-          <ul class="flex items-center gap-4 text-white">
-            <li>
-              <a href="../index.html">Inicio</a>
-            </li>
-            <li>
-              <a href="./products.html">Productos</a>
-            </li>
-          </ul>
-        </div>
-        <div class="flex items-center gap-2">
-          <a
-            class="h-12 flex items-center justify-center py-2"
-            href="./pedidos.html"
-          >
-            <iconify-icon
-              class="text-white cursor-pointer"
-              icon="solar:bag-3-linear"
-              width="32"
-              height="32"
-            ></iconify-icon>
-          </a>
-          <button
-            class="h-12 flex items-center justify-center cursor-pointer py-2 px-4 rounded-full bg-[var(--low-tone-color)]"
-            id="btn_theme"
-          >
-            <iconify-icon
-              class="text-white transition-all duration-400"
-              icon="tdesign:moon-filled"
-              width="22"
-              height="22"
-              id="icon_dark"
-            ></iconify-icon>
-            <iconify-icon
-              class="text-white opacity-0 invisible transition-all duration-400"
-              icon="bi:sun-fill"
-              width="22"
-              height="22"
-              id="icon_light"
-            ></iconify-icon>
+      <div id="mobile_menu"
+        class="fixed top-0 right-0 w-64 h-full bg-[var(--primary-color)] hidden flex flex-col items-center gap-4 py-4 z-40 mobile:hidden">
+        <button class="text-[var(--text-color)] mr-40 text-xl" id="btn_menu_close"><iconify-icon icon="oui:cross"
+            width="22" height="22"></iconify-icon>
+        </button>
+        <button
+          class="h-12 flex items-center justify-center cursor-pointer py-2 px-4 rounded-full bg-[var(--low-tone-color)]"
+          id="btn_theme">
+          <iconify-icon class="text-white transition-all duration-400" icon="tdesign:moon-filled" width="22" height="22"
+            id="icon_dark"></iconify-icon>
+          <iconify-icon class="text-white opacity-0 invisible transition-all duration-400" icon="bi:sun-fill" width="22"
+            height="22" id="icon_light"></iconify-icon>
+        </button>
+        <a href="/" class="text-white px-2 py-4">Inicio</a>
+        <a href="./pages/products.html" class="text-white px-2 py-4">Productos</a>
+      </div>
+    </nav>
+  </header>
+  <main class="w-[90%] mx-auto">
+    <section class="flex flex-col gap-4 my-4">
+      <div>
+        <h1 class="text-4xl mb-2 text-[var(--text-color)]">Tus pedidos</h1>
+        <p class="text-[var(--text-color-secondary)]">
+          En esta sección podras ver el historial de pedidos, hasta incluso
+          los mas recientes.
+        </p>
+      </div>
+      <div class="flex gap-2 items-center text-[var(--text-color)]">
+        <iconify-icon icon="mage:filter" width="24" height="24"></iconify-icon>
+        <h3 class="text-xl text-center">Filtros</h3>
+        <div class="flex gap-3 items-center">
+          <button class="px-5 py-2 text-sm rounded-full bg-[var(--bg-color-secondary)] cursor-pointer transition-all"
+            data-filter="en_proceso" id="filterButton">
+            En proceso
+          </button>
+          <button class="px-5 py-2 text-sm rounded-full bg-[var(--bg-color-secondary)] cursor-pointer transition-all"
+            data-filter="entregados" id="filterButton">
+            Entregados
+          </button>
+          <button class="px-5 py-2 text-sm rounded-full bg-[var(--bg-color-secondary)] cursor-pointer transition-all"
+            data-filter="cancelados" id="filterButton">
+            Cancelados
           </button>
         </div>
-      </nav>
-    </header>
-    <main class="w-[90%] mx-auto">
-      <section class="flex flex-col gap-4 my-4">
-        <div>
-          <h1 class="text-4xl mb-2 text-[var(--text-color)]">Tus pedidos</h1>
-          <p class="text-[var(--text-color-secondary)]">
-            En esta sección podras ver el historial de pedidos, hasta incluso
-            los mas recientes.
-          </p>
-        </div>
-        <div class="flex gap-2 items-center text-[var(--text-color)]">
-          <iconify-icon
-            icon="mage:filter"
-            width="24"
-            height="24"
-          ></iconify-icon>
-          <h3 class="text-xl text-center">Filtros</h3>
-          <div class="flex gap-3 items-center">
-            <button
-              class="px-5 py-2 text-sm rounded-full bg-[var(--bg-color-secondary)] cursor-pointer transition-all"
-              data-filter="en_proceso"
-              id="filterButton"
-            >
-              En proceso
-            </button>
-            <button
-              class="px-5 py-2 text-sm rounded-full bg-[var(--bg-color-secondary)] cursor-pointer transition-all"
-              data-filter="entregados"
-              id="filterButton"
-            >
-              Entregados
-            </button>
-            <button
-              class="px-5 py-2 text-sm rounded-full bg-[var(--bg-color-secondary)] cursor-pointer transition-all"
-              data-filter="cancelados"
-              id="filterButton"
-            >
-              Cancelados
-            </button>
-          </div>
-        </div>
-        <div
-          class="flex-col w-full flex rounded-2xl gap-3 bg-[var(--bg-color-secondary)] text-[var(--text-color)]"
-        >
-          <div class="w-full flex items-center justify-between py-3 px-5">
-            <div class="flex items-center gap-2">
-              <img
-                src="../assets/images/1.png"
-                alt="Nombre de la comida"
-                width="64"
-                height="64"
-              />
-              <div class="flex-col justify-between">
-                <h3 class="text-base">Burrito x 2</h3>
-                <span class="text-sm text-[var(--text-color-secondary)]"
-                  >En Proceso</span
-                >
-              </div>
+      </div>
+      <div class="flex-col w-full flex rounded-2xl gap-3 bg-[var(--bg-color-secondary)] text-[var(--text-color)]">
+        <div class="w-full flex items-center justify-between py-3 px-5">
+          <div class="flex items-center gap-2">
+            <img src="../assets/images/1.png" alt="Nombre de la comida" width="64" height="64" />
+            <div class="flex-col justify-between">
+              <h3 class="text-base">Burrito x 2</h3>
+              <span class="text-sm text-[var(--text-color-secondary)]">En Proceso</span>
             </div>
-            <button
-              class="cursor-pointer py-3 px-4 rounded-xl text-[var(--primary-color)] bg-[var(--low-tone-color)] transition-all hover:bg-[var(--primary-color)] hover:text-[var(--text-color)]"
-            >
-              Cancelar
-            </button>
           </div>
-          <div class="w-full flex items-center justify-between py-3 px-5">
-            <div class="flex items-center gap-2">
-              <img
-                src="../assets/images/2.png"
-                alt="Nombre de la comida"
-                width="64"
-                height="64"
-              />
-              <div class="flex-col justify-between">
-                <h3 class="text-base">Empanadas x 3</h3>
-                <span class="text-sm text-red-400">Cancelado</span>
-              </div>
-            </div>
-            <button
-              class="cursor-not-allowed py-3 px-4 rounded-xl text-[var(--primary-color)] bg-[var(--low-tone-color)] disabled:opacity-70"
-              disabled
-            >
-              Cancelar
-            </button>
-          </div>
-          <div class="w-full flex items-center justify-between py-3 px-5">
-            <div class="flex items-center gap-2">
-              <img
-                src="../assets/images/4.png"
-                alt="Nombre de la comida"
-                width="64"
-                height="64"
-              />
-              <div class="flex-col justify-between">
-                <h3 class="text-base">Empanadas x 3</h3>
-                <span class="text-sm text-green-600">Entregado</span>
-              </div>
-            </div>
-            <button
-              class="cursor-not-allowed py-3 px-4 rounded-xl text-[var(--primary-color)] bg-[var(--low-tone-color)] disabled:opacity-70"
-              disabled
-            >
-              Cancelar
-            </button>
-          </div>
+          <button
+            class="cursor-pointer py-3 px-4 rounded-xl text-[var(--primary-color)] bg-[var(--low-tone-color)] transition-all hover:bg-[var(--primary-color)] hover:text-[var(--text-color)]">
+            Cancelar
+          </button>
         </div>
-      </section>
-    </main>
-    <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configuraciones de Tailwind CSS -->
-    <script>
-      tailwind.config = {
-        theme: {
-          extends: {},
-          screens: {
-            desktop: "1200px",
-            laptop: "992px",
-            tablet: "768px",
-            mobile: "480px"
-          }
+        <div class="w-full flex items-center justify-between py-3 px-5">
+          <div class="flex items-center gap-2">
+            <img src="../assets/images/2.png" alt="Nombre de la comida" width="64" height="64" />
+            <div class="flex-col justify-between">
+              <h3 class="text-base">Empanadas x 3</h3>
+              <span class="text-sm text-red-400">Cancelado</span>
+            </div>
+          </div>
+          <button
+            class="cursor-not-allowed py-3 px-4 rounded-xl text-[var(--primary-color)] bg-[var(--low-tone-color)] disabled:opacity-70"
+            disabled>
+            Cancelar
+          </button>
+        </div>
+        <div class="w-full flex items-center justify-between py-3 px-5">
+          <div class="flex items-center gap-2">
+            <img src="../assets/images/4.png" alt="Nombre de la comida" width="64" height="64" />
+            <div class="flex-col justify-between">
+              <h3 class="text-base">Empanadas x 3</h3>
+              <span class="text-sm text-green-600">Entregado</span>
+            </div>
+          </div>
+          <button
+            class="cursor-not-allowed py-3 px-4 rounded-xl text-[var(--primary-color)] bg-[var(--low-tone-color)] disabled:opacity-70"
+            disabled>
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Configuraciones de Tailwind CSS -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extends: {},
+        screens: {
+          desktop: "1200px",
+          laptop: "992px",
+          tablet: "768px",
+          mobile: "480px"
         }
       }
-    </script>
-    <script src="../js/main.js"></script>
-    <script src="../js/filter.js"></script>
-  </body>
+    }
+  </script>
+  <script src="../js/main.js"></script>
+  <script src="../js/filter.js"></script>
+</body>
+
 </html>

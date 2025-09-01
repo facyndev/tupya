@@ -77,7 +77,7 @@ function updateFilters(foods) {
 
   if (filteredFoods.length === 0) {
     productsListElement.innerHTML =
-      '<p class="text-center text-base text-[var(--text-color-secondary)] mt-[30%]">Upps! No encontramos la comida que estas buscando.</p>';
+      '<p class="text-center text-xl font-medium text-[var(--text-color-secondary)] my-auto max-tablet:mt-0">Upps! No encontramos la comida que estas buscando.</p>';
   } else {
     // Limpiamos el HTML para que cuando haya un nuevo filtro no se superponga con el anterior
     productsListElement.innerHTML = "";
@@ -98,28 +98,28 @@ function updateFilters(foods) {
 
       // Hacemos uso de encodeURIComponent para que los ingredientes que tengan espacio puedan ser obtenidos correctamente como imagen. Por ejemplo: Basmati Rice -> Basmati%20Rice
       productsListElement.innerHTML += `
-        <div class="w-full flex justify-between">
-            <a class="w-full flex items-start gap-4 " href="./product.html?id=${id}">
+        <div class="w-full flex justify-between gap-4 max-tablet:flex-col">
+            <a class="w-full flex items-start gap-4" href="./product.html?id=${id}">
                 <img class="w-32 h-32 object-fit rounded-2xl" src="${image}" alt="${title}">
-                <div class="h-full flex flex-col justify-between items-start">
-                <div class="flex flex-col gap-1">        
-                    <h3 class="text-xl text-[var(--text-color)] hover:underline">${title}</h3>
-                    <p class="text-base text-[var(--text-color-secondary)] w-150 line-clamp-2">${description}</p>
-                </div>
-                <div class="flex items-center gap-2">
-                    ${ingredients
-                        .map(
-                          (ingredient) =>
-                            `<img src="https://www.themealdb.com/images/ingredients/${encodeURIComponent(
-                              ingredient
-                            )}.png" class="rounded-xl grayscale" alt="${ingredient}" width="24" height="24" title="${ingredient}"/>`
-                        )
-                        .join("")}
-                </div>
+                <div class="h-full flex flex-col justify-between items-start ">
+                  <div class="flex flex-col gap-1">        
+                      <h3 class="text-xl text-[var(--text-color)] hover:underline">${title}</h3>
+                      <p class="text-base text-[var(--text-color-secondary)] w-150 line-clamp-2">${description}</p>
+                  </div>
+                  <div class="flex items-center gap-2 flex-wrap max-mobile:hidden">
+                      ${ingredients
+                          .map(
+                            (ingredient) =>
+                              `<img src="https://www.themealdb.com/images/ingredients/${encodeURIComponent(
+                                ingredient
+                              )}.png" class="rounded-xl grayscale" alt="${ingredient}" width="24" height="24" title="${ingredient}"/>`
+                          )
+                          .join("")}
+                  </div>
                 </div>
             </a>
             <button 
-                class="rounded-xl bg-[var(--low-tone-color)] px-10 text-white hover:cursor-pointer"
+                class="rounded-xl h-32 bg-[var(--low-tone-color)] px-10 text-white hover:cursor-pointer max-tablet:h-fit"
               >
                 <iconify-icon
                       class="text-[var(--primary-color)]" icon="line-md:plus" 
