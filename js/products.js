@@ -1,12 +1,14 @@
 const productsListElement = document.getElementById("products_list");
 const searchInputElement = document.getElementById("search_product");
 const filterElements = document.querySelectorAll('input[filter]');
+const btnEraserElement = document.getElementById('btn_eraser');
 
 const pageUrl = new URL(window.location);
 const params = new URLSearchParams(window.location.search);
 
 window.addEventListener("DOMContentLoaded", () => {
-  productsListElement.innerHTML = '<p class="text-center text-base text-[var(--text-color-secondary)] mt-[30%]">Cargando...</p>';
+  productsListElement.innerHTML = '<p class="text-center text-xl font-medium text-[var(--text-color-secondary)]">Cargando...</p>';
+
   getFoods()
     .then((foods) => {
       updateFilters(foods)
@@ -16,6 +18,12 @@ window.addEventListener("DOMContentLoaded", () => {
         params.set("search", e.currentTarget.value);
         updateFilters(foods);
       });
+
+      // Borrar contenido del input con un boton
+      btnEraserElement.addEventListener('click', () => {
+      params.set('search', '');
+      updateFilters(foods)
+    }) 
 
       // Filtrador por categorias y regiones
       filterElements.forEach((el) => {
@@ -35,9 +43,16 @@ window.addEventListener("DOMContentLoaded", () => {
 
 async function getFoods() {
   try {
-    const res = await fetch("../mock/products.json");
-    const { meals } = await res.json();
-    return meals;
+    let foods = [];
+    
+    // Generamos 10 comidas random
+    for (let i = 0; i < 10; i++) {
+      const res = await fetch("https://www.themealdb.com/api/json/v1/1/random.php");
+      const { meals } = await res.json(); 
+      foods.push(meals[0]);
+    }
+
+    return foods;
   } catch (err) {
     return [];
   }
@@ -77,7 +92,7 @@ function updateFilters(foods) {
 
   if (filteredFoods.length === 0) {
     productsListElement.innerHTML =
-      '<p class="text-center text-xl font-medium text-[var(--text-color-secondary)] my-auto max-tablet:mt-0">Upps! No encontramos la comida que estas buscando.</p>';
+      `<p class="text-center text-xl font-medium text-[var(--text-color-secondary)]">Upps! No encontramos "${search}" en nuestras comidas.</p>`;
   } else {
     // Limpiamos el HTML para que cuando haya un nuevo filtro no se superponga con el anterior
     productsListElement.innerHTML = "";
