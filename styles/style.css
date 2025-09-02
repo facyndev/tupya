@@ -7,6 +7,7 @@
   --text-color: #202020;
   --text-color-secondary: #625d5d;
   --borders-color: #afa3a3;
+  --bg-footer:#7c2020;
 
   /* Utilizamos la fuente Poppins, en caso de que no pueda cargarse utilizamos la que tiene el usuario en su sistema por defecto */
   font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
