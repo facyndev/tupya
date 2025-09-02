@@ -137,6 +137,7 @@
           <label for="email" class="block text-sm/6 font-medium text-white">Email</label>
           <div class="mt-2">
             <input id="email" type="email" name="email" autocomplete="email" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 max-mobile:text-sm/6" />
+            <p id="mensaje_error" class="mt-1 text-sm/6 text-gray-400"></p>
           </div>
         </div>
 
@@ -176,6 +177,7 @@
           <label for="postal-code" class="block text-sm/6 font-medium text-white">Codigo Postal</label>
           <div class="mt-2">
             <input id="postal-code" type="text" name="postal-code" autocomplete="postal-code" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 max-mobile:text-sm/6" />
+            <p id="mensaje_error_codigoPostal" class="mt-1 text-sm/6 text-gray-400"></p>
           </div>
         </div>
                 <div class="col-span-full">
@@ -196,21 +198,6 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <!-- Configuraciones de Tailwind CSS -->
 <script>
-  const paisesElement= document.getElementById("country");
-
-async function cargaPais(){
-  try {
-    const res= await fetch("https://restcountries.com/v3.1/all?fields=name")
-    const result= await res.json();
-    const paisesNombres= result.map((pais) => pais.name.common).sort()
-    paisesNombres.forEach((e)=>{
-      paisesElement.innerHTML+=`<option value="${e}" >${e}</option>`;
-    })
-  } catch (error) {
-    console.error(error)
-  }
-    }
-cargaPais();
   tailwind.config = {
     theme: {
       extends: {},
@@ -224,5 +211,6 @@ cargaPais();
   }
 </script>
 <script src="./js/main.js"></script>
+<script src="./js/formulario.js"></script>
 
 </html>
