@@ -8,10 +8,10 @@ const btnMenuClose = document.getElementById("btn_menu_close");
 
 // Botones para menu hamburgesa
 btnMenu.addEventListener("click", () => {
-  mobileMenu.classList.toggle("hidden");
+  mobileMenu.classList.toggle("translate-x-full");
 });
 btnMenuClose.addEventListener("click", () => {
-  mobileMenu.classList.toggle("hidden");
+  mobileMenu.classList.toggle("translate-x-full");
 })
 
 // Cuando el contenido de nuestra pagina termine de cargar, ejecutamos lo que este dentro.
