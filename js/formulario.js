@@ -1,5 +1,5 @@
 const emailElement = document.getElementById("email");
-const nombreElement= document.getElementById("nombre");
+const nameElement= document.getElementById("nombre");
 const apellidoElement= document.getElementById("apellido");
 const direccionElement= document.getElementById("direccion");
 const ciudadElement= document.getElementById("ciudad");
@@ -10,10 +10,10 @@ const paisesElement = document.getElementById("pais");
 const validacionEmail = /^[\w-]+@[\w-]+\.[a-z]{2,4}$/i;
 const validacionCodigoPostal = /^\d+$/;
 const codigoPostalElement = document.getElementById("postal-code");
-const enviarElement = document.getElementById("btn-enviar-form");
+const enviarElement = document.getElementById("btn_send_form");
 const valorVacio="";
 
-nombreElement.addEventListener("input",bloquearEnviar());
+nameElement.addEventListener("input",bloquearEnviar());
 apellidoElement.addEventListener("input",bloquearEnviar())
 direccionElement.addEventListener("input",bloquearEnviar())
 ciudadElement.addEventListener("input",bloquearEnviar())
@@ -61,16 +61,17 @@ async function cargaPais() {
 cargaPais();
 
 function bloquearEnviar (){
-
-  if((emailElement.value, codigoPostalElement.value, nombreElement.value, apellidoElement.value, provinciaElement.value, direccionElement.value, ciudadElement.value)===""){
+  if((emailElement.value, codigoPostalElement.value, nameElement.value, apellidoElement.value, provinciaElement.value, direccionElement.value, ciudadElement.value) === ""){
     enviarElement.classList.remove("hover:bg-[var(--primary-color)]")
     enviarElement.classList.remove("hover:text-white")
-    enviarElement.disabled=true;
+    enviarElement.disabled = true;
+    enviarElement.title = "Rellena el los campos del formulario para enviar."
   }
   else{
     enviarElement.classList.add("hover:bg-[var(--primary-color)]")
     enviarElement.classList.add("hover:text-white")
     enviarElement.disabled=false;
+    enviarElement.title = ""
   }
 }
 
