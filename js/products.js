@@ -114,7 +114,7 @@ function updateFilters(foods) {
       // Hacemos uso de encodeURIComponent para que los ingredientes que tengan espacio puedan ser obtenidos correctamente como imagen. Por ejemplo: Basmati Rice -> Basmati%20Rice
       productsListElement.innerHTML += `
         <div class="w-full flex justify-between gap-4 max-tablet:flex-col">
-            <a class="w-full flex items-start gap-4" href="./product.html?id=${id}">
+            <a class="w-full flex items-start gap-4" href="./product.html?id=${id}" target="_blank">
                 <img class="w-32 h-32 object-fit rounded-2xl" src="${image}" alt="${title}">
                 <div class="h-full flex flex-col justify-between items-start ">
                   <div class="flex flex-col gap-1">        
@@ -124,10 +124,10 @@ function updateFilters(foods) {
                   <div class="flex items-center gap-2 flex-wrap max-mobile:hidden">
                       ${ingredients
                           .map(
-                            (ingredient) =>
+                            (ingredient) => ingredient ? 
                               `<img src="https://www.themealdb.com/images/ingredients/${encodeURIComponent(
                                 ingredient
-                              )}.png" class="rounded-xl grayscale" alt="${ingredient}" width="24" height="24" title="${ingredient}"/>`
+                              )}.png" class="rounded-xl grayscale" alt="${ingredient}" width="24" height="24" title="${ingredient}"/>` : ''
                           )
                           .join("")}
                   </div>

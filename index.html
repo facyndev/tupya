@@ -116,7 +116,7 @@
     </div>
   </main>
   <footer class="flex justify-center bg-[var(--bg-footer)] w-full py-6">
-    <form class="w-[90%] mx-auto overflow-x-hidden" id="contact_form">
+    <form class="w-[90%] mx-auto" id="contact_form">
       <div class="space-y-8 w-full">
         <h2 class="text-3xl font-semibold text-white text-center mb-24">¿Te gustaria hablar con nosotros?</h2>
         <div class="grid grid-cols-1 gap-x-6 gap-y-8 tablet:grid-cols-8">
@@ -152,15 +152,15 @@
                   <input id="email" type="email" name="email" autocomplete="email" class="block w-full rounded-md bg-white/5 p-4 text-base text-white outline-1
                   -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline
                   focus:outline-offset-4 focus:outline-[var(--low-tone-color)] mobile:text-sm/6" />
-                  <p id="mensaje_error" class="mt-1 text-sm/6 text-gray-400"></p>
+                   <p id="error_message_email" class="mt-1 text-base text-red-500"></p>
                 </div>
               </div>
 
-              <!-- Pais -->
+              <!-- country -->
               <div class="tablet:col-span-3 laptop:col-span-6">
-                <label for="country" class="block text-sm/6 font-medium text-white">Pais</label>
+                <label for="country" class="block text-sm/6 font-medium text-white">country</label>
                 <div class="mt-2 grid grid-cols-1">
-                  <select id="pais" name="country" autocomplete="country-name" class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white/5 p-4
+                  <select id="country" name="country" autocomplete="country-name" class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white/5 p-4
                   text-base text-white outline-1 -outline-offset-1 outline-white/10 *:bg-[var(--low-tone-color)] *:text-black *:border-none focus:outline
                   focus:outline-offset-4 focus:outline-[var(--low-tone-color)] mobile:text-sm/6">
                   </select>
@@ -205,20 +205,20 @@
 
               <!-- Codigo postal -->
               <div class="tablet:col-span-3">
-                <label for="postal-code" class="block text-sm/6 font-medium text-white">Codigo Postal</label>
+                <label for="zip_code" class="block text-sm/6 font-medium text-white">Codigo Postal</label>
                 <div class="mt-2">
-                  <input id="postal-code" type="text" name="postal-code" autocomplete="postal-code" class="block w-full rounded-md bg-white/5 p-4 text-base text-white outline-1
+                  <input id="zip_code" type="text" name="zip_code" autocomplete="zip_code" class="block w-full rounded-md bg-white/5 p-4 text-base text-white outline-1
                   -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline
                   focus:outline-offset-4 focus:outline-[var(--low-tone-color)] mobile:text-sm/6" />
-                  <p id="mensaje_error_codigoPostal" class="mt-1 text-sm/6 text-gray-400"></p>
+                  <p id="error_message_zipCode" class="mt-1 text-base text-red-500"></p>
                 </div>
               </div>
 
               <!-- Mensaje -->
               <div class="col-span-full">
-                <label for="about" class="block text-sm/6 font-medium text-white">Asunto</label>
+                <label for="about" class="block text-sm/6 font-medium text-white">Mensaje</label>
                 <div class="mt-2">
-                  <textarea id="about" name="about" rows="3" class="block w-full rounded-md bg-white/5 p-4 text-base text-white outline-1
+                  <textarea id="message" name="about" rows="3" class="block w-full rounded-md bg-white/5 p-4 text-base text-white outline-1
                   -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline
                   focus:outline-offset-4 focus:outline-[var(--low-tone-color)] mobile:text-sm/6"></textarea>
                 </div>
@@ -229,7 +229,7 @@
               <div class="col-span-full flex justify-center mt-6">
                 <button
                   class="w-full cursor-pointer py-3 px-4 rounded-xl text-[var(--primary-color)] bg-[var(--low-tone-color)] disabled:opacity-70 disabled:cursor-not-allowed"
-                  id="btn_send_form">
+                  id="btn_send_form" disabled>
                   Enviar
                 </button>
               </div>
@@ -257,6 +257,6 @@
   }
 </script>
 <script src="./js/main.js"></script>
-<script src="./js/formulario.js"></script>
+<script src="./js/form.js"></script>
 
 </html>
