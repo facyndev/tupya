@@ -6,6 +6,7 @@ const btnEraserElement = document.getElementById('btn_eraser');
 const pageUrl = new URL(window.location);
 const params = new URLSearchParams(window.location.search);
 
+
 window.addEventListener("DOMContentLoaded", () => {
   productsListElement.innerHTML = '<p class="text-center text-xl font-medium text-[var(--text-color-secondary)]">Cargando...</p>';
 
@@ -115,7 +116,7 @@ function updateFilters(foods) {
       productsListElement.innerHTML += `
         <div class="w-full flex justify-between gap-4 max-tablet:flex-col">
             <a class="w-full flex items-start gap-4" href="./product.html?id=${id}" target="_blank">
-                <img class="w-32 h-32 object-fit rounded-2xl" src="${image}" alt="${title}">
+                <img class="w-32 h-32 object-fit rounded-2xl" src="${image+'/small'}" alt="${title}">
                 <div class="h-full flex flex-col justify-between items-start">
                   <div class="flex flex-col gap-1">        
                       <h3 class="text-xl text-[var(--text-color)] hover:underline">${title}</h3>
@@ -126,7 +127,7 @@ function updateFilters(foods) {
                           .map(
                             (ingredient) => ingredient ? 
                               `<img src="https://www.themealdb.com/images/ingredients/${encodeURIComponent(
-                                ingredient
+                                ingredient + '-small'
                               )}.png" class="rounded-xl grayscale" alt="${ingredient}" width="24" height="24" title="${ingredient}"/>` : ''
                           )
                           .join("")}

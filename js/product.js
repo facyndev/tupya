@@ -18,7 +18,7 @@ window.addEventListener('DOMContentLoaded', () => {
             productDetailsElement.innerHTML = `
                 <div class="grid grid-cols-5 grid-rows-4 gap-4 h-[calc(100vh-95px)] flex-1 sticky top-4">
                     <div class="row-span-4 overflow-y-auto h-full shadow-xl/30">
-                        ${ingredients.map((ingredient) => ingredient ? `<img src="https://www.themealdb.com/images/ingredients/${encodeURI(ingredient)}.png" alt="${ingredient}">` : '').join("")}
+                        ${ingredients.map((ingredient) => ingredient ? `<img src="https://www.themealdb.com/images/ingredients/${encodeURI(ingredient + '-small')}.png" alt="${ingredient}">` : '').join("")}
                     </div>
 
                     <div class="col-span-4 row-span-4 flex-1">
