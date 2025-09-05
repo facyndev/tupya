@@ -1,3 +1,17 @@
 # TupYa 
 
-*TupYa* es una tienda en linea que te permite realizar pedidos de diferentes comidas.
+## ¿Qué es?
+
+**TupYa** es un proyecto práctico de universidad (UTN). 
+
+## ¿De que trata?
+
+**TupYa** es una tienda de comida en linea que te permite realizar multiples pedidos.
+
+## Tecnologías
+
+`HTML` - `CSS & TailwindCSS` - `JavaScript`
+
+El proyecto obtiene información de [TheMealDB](https://www.themealdb.com) la cual es una API gratuita con gran cantidad de comidas/recetas con sus respectivos ingredientes e imagenes.
+
+
