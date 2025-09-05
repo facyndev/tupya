@@ -116,7 +116,7 @@ function updateFilters(foods) {
         <div class="w-full flex justify-between gap-4 max-tablet:flex-col">
             <a class="w-full flex items-start gap-4" href="./product.html?id=${id}" target="_blank">
                 <img class="w-32 h-32 object-fit rounded-2xl" src="${image}" alt="${title}">
-                <div class="h-full flex flex-col justify-between items-start ">
+                <div class="h-full flex flex-col justify-between items-start">
                   <div class="flex flex-col gap-1">        
                       <h3 class="text-xl text-[var(--text-color)] hover:underline">${title}</h3>
                       <p class="text-base text-[var(--text-color-secondary)] w-150 line-clamp-2">${description}</p>
