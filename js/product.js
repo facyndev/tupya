@@ -2,20 +2,22 @@ const productDetailsElement = document.getElementById('product_details');
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
 
+
+
 window.addEventListener('DOMContentLoaded', () => {
+    document.title = "Cargando... | TupYa"
+    productDetailsElement.innerHTML = '<p class="w-full mx-auto text-center text-xl font-medium text-[var(--text-color-secondary)]">Cargando...</p>'
     getFood(Number(id))
         .then((food) => {
-            console.log(food);
-            
             const { strMeal: title, strInstructions: description, strMealThumb: image, strCategory: category, strTags: tags, strYoutube: youtubeVideo } = food[0]
-            console.log(tags)
             const ingredients = Object.entries(food[0])
                 .filter((key) => key[0].includes("strIngredient") && key[1] != "")
                 .map((ingredient) => ingredient[1]);
-
+                
+            document.title = `${title} | TupYa`
             productDetailsElement.innerHTML = `
-                <div class="grid grid-cols-5 grid-rows-4 gap-4 h-[500px] flex-1 sticky top-4">
-                    <div class="row-span-4 overflow-y-auto h-full">
+                <div class="grid grid-cols-5 grid-rows-4 gap-4 h-[calc(100vh-95px)] flex-1 sticky top-4">
+                    <div class="row-span-4 overflow-y-auto h-full shadow-xl/30">
                         ${ingredients.map((ingredient) => ingredient ? `<img src="https://www.themealdb.com/images/ingredients/${encodeURI(ingredient)}.png" alt="${ingredient}">` : '').join("")}
                     </div>
 
@@ -35,19 +37,19 @@ window.addEventListener('DOMContentLoaded', () => {
                     class="flex items-center justify-center gap-2 w-full bg-[var(--primary-color)] p-4 text-white text-lg cursor-pointer rounded-full">
                     <iconify-icon class="text-white" icon="line-md:plus" width="30" height="30">
                     </iconify-icon>
-                    Pedir "${title}"
+                        Pedir "${title}"
                     </button>
                     <div class="h-[1px] w-full bg-[var(--borders-color)]"></div>
                     <p class="text-[var(--text-color-secondary)] text-md mb-12">${description}</p>
-
-                    <iframe class="w-full rounded-xl" width="560" height="315" src="${youtubeVideo}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>`
+                    <h3 class="text-2xl font-medium text-[var(--text-color)]">Mira la receta completa</h3>
+                    <iframe class="w-full rounded-xl" width="560" height="315" src="https://www.youtube.com/embed/${youtubeVideo.split("?v=")[1]}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                `
         })
         .catch((e) => console.log(e))
 })
 
 function getFood(id) {
-    console.log(typeof id)
     return new Promise(async (resolve, reject) => {
         // Verificamos que la ID sea un valor numerico
         if (typeof id != "number") reject("La ID debe ser un valor numerico.")
