@@ -92,7 +92,7 @@ function updateFilters(foods) {
 
   if (filteredFoods.length === 0) {
     productsListElement.innerHTML =
-      `<p class="text-center text-xl font-medium text-[var(--text-color-secondary)]">Upps! No encontramos "${search}" en nuestras comidas.</p>`;
+      `<p class="text-center text-xl font-medium text-[var(--text-color-secondary)]">Upps! No encontramos "${search || areas}" en nuestras comidas.</p>`;
   } else {
     // Limpiamos el HTML para que cuando haya un nuevo filtro no se superponga con el anterior
     productsListElement.innerHTML = "";
@@ -133,7 +133,7 @@ function updateFilters(foods) {
                   </div>
                 </div>
             </a>
-            <button 
+            <button id="agregar"
                 class="rounded-xl h-32 bg-[var(--low-tone-color)] px-10 text-white hover:cursor-pointer max-tablet:h-fit"
               >
                 <iconify-icon
