@@ -22,9 +22,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
       // Borrar contenido del input con un boton
       btnEraserElement.addEventListener('click', () => {
-      params.set('search', '');
-      updateFilters(foods)
-    }) 
+        params.set('search', '');
+        updateFilters(foods)
+      })
 
       // Filtrador por categorias y regiones
       filterElements.forEach((el) => {
@@ -45,11 +45,11 @@ window.addEventListener("DOMContentLoaded", () => {
 async function getFoods() {
   try {
     let foods = [];
-    
+
     // Generamos 10 comidas random
     for (let i = 0; i < 10; i++) {
       const res = await fetch("https://www.themealdb.com/api/json/v1/1/random.php");
-      const { meals } = await res.json(); 
+      const { meals } = await res.json();
       foods.push(meals[0]);
     }
 
@@ -92,31 +92,32 @@ function updateFilters(foods) {
   });
 
   if (filteredFoods.length === 0) {
-    productsListElement.innerHTML =
-      `<p class="text-center text-xl font-medium text-[var(--text-color-secondary)]">Upps! No encontramos "${search || areas}" en nuestras comidas.</p>`;
+  productsListElement.innerHTML = `<p class="text-center text-xl font-medium text-[var(--text-color-secondary)]">No encontramos resultados con tu busqueda o filtros.</p>`;
+
   } else {
-    // Limpiamos el HTML para que cuando haya un nuevo filtro no se superponga con el anterior
-    productsListElement.innerHTML = "";
+  // Limpiamos el HTML para que cuando haya un nuevo filtro no se superponga con el anterior
+  productsListElement.innerHTML = "";
 
-    filteredFoods.map((meal) => {
-      // Desestructuramos a product y cambiamos el nombre de la clave
-      const {
-        idMeal: id,
-        strMeal: title,
-        strInstructions: description,
-        strMealThumb: image,
-      } = meal;
+  filteredFoods.map((meal) => {
+    // Desestructuramos a product y cambiamos el nombre de la clave
+    const {
+      idMeal: id,
+      strMeal: title,
+      strInstructions: description,
+      strMealThumb: image,
+    } = meal;
 
-      // Filtrar solo las claves del objecto que sean ingredientes
-      const ingredients = Object.entries(meal)
-        .filter((key) => key[0].includes("strIngredient") && key[1] != "")
-        .map((ingredient) => ingredient[1]);
+    // Filtrar solo las claves del objecto que sean ingredientes
+    const ingredients = Object.entries(meal)
+      .filter((key) => key[0].includes("strIngredient") && key[1] != "")
+      .map((ingredient) => ingredient[1]);
 
-      // Hacemos uso de encodeURIComponent para que los ingredientes que tengan espacio puedan ser obtenidos correctamente como imagen. Por ejemplo: Basmati Rice -> Basmati%20Rice
-      productsListElement.innerHTML += `
+    // Hacemos uso de encodeURIComponent para que los ingredientes que tengan espacio puedan ser obtenidos correctamente como imagen. Por ejemplo: Basmati Rice -> Basmati%20Rice
+
+    productsListElement.innerHTML += `
         <div class="w-full flex justify-between gap-4 max-tablet:flex-col">
             <a class="w-full flex items-start gap-4" href="./product.html?id=${id}" target="_blank">
-                <img class="w-32 h-32 object-fit rounded-2xl" src="${image+'/small'}" alt="${title}">
+                <img class="w-32 h-32 object-fit rounded-2xl" src="${image + '/small'}" alt="${title}">
                 <div class="h-full flex flex-col justify-between items-start">
                   <div class="flex flex-col gap-1">        
                       <h3 class="text-xl text-[var(--text-color)] hover:underline">${title}</h3>
@@ -124,17 +125,17 @@ function updateFilters(foods) {
                   </div>
                   <div class="flex items-center gap-2 flex-wrap max-mobile:hidden">
                       ${ingredients
-                          .map(
-                            (ingredient) => ingredient ? 
-                              `<img src="https://www.themealdb.com/images/ingredients/${encodeURIComponent(
-                                ingredient + '-small'
-                              )}.png" class="rounded-xl grayscale" alt="${ingredient}" width="24" height="24" title="${ingredient}"/>` : ''
-                          )
-                          .join("")}
+        .map(
+          (ingredient) => ingredient ?
+            `<img src="https://www.themealdb.com/images/ingredients/${encodeURIComponent(
+              ingredient + '-small'
+            )}.png" class="rounded-xl grayscale" alt="${ingredient} loading="lazy" decondig="async" width="24" height="24" title="${ingredient}"/>` : ''
+        )
+        .join("")}
                   </div>
                 </div>
             </a>
-            <button id="agregar"
+            <button id="add_product"
                 class="rounded-xl h-32 bg-[var(--low-tone-color)] px-10 text-white hover:cursor-pointer max-tablet:h-fit"
               >
                 <iconify-icon
@@ -146,6 +147,6 @@ function updateFilters(foods) {
             </button>
         </div>
         `;
-    });
-  }
+  });
+}
 }
