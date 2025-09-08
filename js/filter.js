@@ -19,9 +19,6 @@ filterButtonsElements.forEach((el) => {
 function updateFilters() {
   const actualValues = params.getAll("filter");
 
-  // Indicamos los nuevos parametros de busqueda a nuestra URL
-  pageUrl.search = params.toString();
-
   // Creamos la url que posteriormente sera que la reemplza
   const newUrl = `${pageUrl.pathname}?${params.toString()}${pageUrl.hash}`;
 
