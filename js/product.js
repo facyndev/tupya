@@ -15,12 +15,11 @@ window.addEventListener('DOMContentLoaded', () => {
                 
             document.title = `${title} | TupYa`
             productDetailsElement.innerHTML = `
-                <div class="grid grid-cols-5 grid-rows-4 gap-4 h-[calc(100vh-95px)] flex-1 sticky top-4">
-                    <div class="row-span-4 overflow-y-auto h-full shadow-xl/30">
+                <div class="grid grid-cols-5 grid-rows-4 gap-4 h-[calc(100vh-95px)] flex-1 sticky top-4 max-mobile:static max-mobile:grid-rows-4 max-mobile:grid-cols-4 max-mobile:gap-2">
+                    <div class="row-span-4 overflow-y-auto h-full shadow-xl/30 max-mobile:overflow-x-scroll max-mobile:row-start-5 max-mobile:flex max-mobile:col-span-5 max-mobile:h-1/2">
                         ${ingredients.map((ingredient) => ingredient ? `<img src="https://www.themealdb.com/images/ingredients/${encodeURI(ingredient + '-small')}.png" alt="${ingredient}">` : '').join("")}
                     </div>
-
-                    <div class="col-span-4 row-span-4 flex-1">
+                    <div class="col-span-4 row-span-4 flex-1 max-mobile:col-span-4">
                     <img class="rounded-xl w-full h-full object-cover"
                         src="${image}" alt="${title}">
                     </div>
