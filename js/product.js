@@ -2,11 +2,10 @@ const productDetailsElement = document.getElementById('product_details');
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
 
-
-
 window.addEventListener('DOMContentLoaded', () => {
-    document.title = "Cargando... | TupYa"
     productDetailsElement.innerHTML = '<p class="w-full mx-auto text-center text-xl font-medium text-[var(--text-color-secondary)]">Cargando...</p>'
+    document.title = "Cargando... | TupYa";
+
     getFood(Number(id))
         .then((food) => {
             const { strMeal: title, strInstructions: description, strMealThumb: image, strCategory: category, strTags: tags, strYoutube: youtubeVideo } = food[0]
@@ -49,7 +48,7 @@ window.addEventListener('DOMContentLoaded', () => {
         .catch((e) => console.log(e))
 })
 
-function getFood(id) {
+export function getFood(id) {
     return new Promise(async (resolve, reject) => {
         // Verificamos que la ID sea un valor numerico
         if (typeof id != "number") reject("La ID debe ser un valor numerico.")
