@@ -12,16 +12,15 @@ window.addEventListener('DOMContentLoaded', () => {
             const ingredients = Object.entries(food[0])
                 .filter((key) => key[0].includes("strIngredient") && key[1] != "")
                 .map((ingredient) => ingredient[1]);
-                
+
             document.title = `${title} | TupYa`
             productDetailsElement.innerHTML = `
-                <div class="grid grid-cols-5 grid-rows-4 gap-4 h-[calc(100vh-95px)] flex-1 sticky top-4 max-mobile:static max-mobile:grid-rows-4 max-mobile:grid-cols-4 max-mobile:gap-2">
-                    <div class="row-span-4 overflow-y-auto h-full shadow-xl/30 max-mobile:overflow-x-scroll max-mobile:row-start-5 max-mobile:flex max-mobile:col-span-5 max-mobile:h-1/2">
-                        ${ingredients.map((ingredient) => ingredient ? `<img src="https://www.themealdb.com/images/ingredients/${encodeURI(ingredient + '-small')}.png" alt="${ingredient}">` : '').join("")}
+                <div class="flex gap-2 tablet:h-[calc(100vh-95px)] sticky tablet:top-4 max-tablet:static max-tablet:flex-col-reverse">
+                    <div class="flex flex-col gap-2 w-16 overflow-y-auto max-tablet:flex-row max-tablet:w-full max-tablet:h-16 max-tablet:overflow-x-auto">
+                        ${ingredients.map((ingredient) => ingredient ? `<img src="https://www.themealdb.com/images/ingredients/${encodeURI(ingredient + '-small')}.png" class="w-full h-auto max-tablet:w-fit" alt="${ingredient}" title="${ingredient}">` : '').join("")}
                     </div>
-                    <div class="col-span-4 row-span-4 flex-1 max-mobile:col-span-4">
-                    <img class="rounded-xl w-full h-full object-cover"
-                        src="${image}" alt="${title}">
+                    <div class="flex-1">
+                        <img class="w-full h-full rounded-xl object-cover object-center" src="${image}" alt="${title}">
                     </div>
                 </div>
 
@@ -40,6 +39,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     <div class="h-[1px] w-full bg-[var(--borders-color)]"></div>
                     <p class="text-[var(--text-color-secondary)] text-md mb-12">${description}</p>
                     <h3 class="text-2xl font-medium text-[var(--text-color)]">Mira la receta completa</h3>
+
                     <iframe class="w-full rounded-xl" width="560" height="315" src="https://www.youtube.com/embed/${youtubeVideo.split("?v=")[1]}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
                 `
