@@ -1,3 +1,4 @@
+import { updateButtons } from './orders.js';
 const productDetailsElement = document.getElementById('product_details');
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
@@ -31,11 +32,12 @@ window.addEventListener('DOMContentLoaded', () => {
                     ${tags !== null ? tags.split(",").map((tag) => `<span class="inline">${tag}</span>`).join(" &bull; ") : ''}
                     </p>
                     <button
-                    class="flex items-center justify-center gap-2 w-full bg-[var(--primary-color)] p-4 text-white text-lg cursor-pointer rounded-full">
+                    class="flex items-center justify-center gap-2 w-full bg-[var(--primary-color)] p-4 text-white text-lg cursor-pointer rounded-full" id="btn_add_product" data-id="${id}">
                     <iconify-icon class="text-white" icon="line-md:plus" width="30" height="30">
                     </iconify-icon>
                         Pedir "${title}"
                     </button>
+                    <small id="newOrder_message" class="mt-1 text-center text-base text-red-500"></small>
                     <div class="h-[1px] w-full bg-[var(--borders-color)]"></div>
                     <p class="text-[var(--text-color-secondary)] text-md mb-12">${description}</p>
                     <h3 class="text-2xl font-medium text-[var(--text-color)]">Mira la receta completa</h3>
@@ -43,6 +45,8 @@ window.addEventListener('DOMContentLoaded', () => {
                     <iframe class="w-full rounded-xl" width="560" height="315" src="https://www.youtube.com/embed/${youtubeVideo.split("?v=")[1]}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
                 `
+
+            updateButtons();
         })
         .catch((e) => console.log(e))
 })
