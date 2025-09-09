@@ -10,17 +10,17 @@ export function updateButtons() {
             // Obtenemos la ID del elemento al cual se le hizo click a traves de su atributo
             const currentId = e.currentTarget.getAttribute('data-id');
 
-            // Obtenemos el contenido HTML del boton
-            const beforeHTML = el.outerHTML;
+            // Guardamos el contenido actual del boton para posteriomente restaurarlo
+            const beforeHTMLContent = el.innerHTML;
             el.textContent = 'Cargando...'
 
-            newOrder(currentId, el, newOrderMessageElement, beforeHTML)
+            newOrder(currentId, el, newOrderMessageElement, beforeHTMLContent)
         })
     })
 }
 
 // Funcion para crear un nuevo pedido de una comida
-function newOrder(currentId, btnAddProductElement, newOrderMessageElement, beforeHTML) {
+function newOrder(currentId, btnAddProductElement, newOrderMessageElement, beforeHTMLContent) {
     getFood(Number(currentId))
         .then((food) => {
             /**
@@ -56,7 +56,6 @@ function newOrder(currentId, btnAddProductElement, newOrderMessageElement, befor
                 localStorage.setItem('orders', JSON.stringify({ "orders": [newOrderObject] }));
             }
 
-            console.log(beforeHTML)
             btnAddProductElement.innerHTML = '<iconify-icon icon="mingcute:check-fill" width="24" height="24"></iconify-icon> Pedido completado';
             if(newOrderMessageElement) {
                 newOrderMessageElement.classList.remove('text-red-500');
@@ -66,7 +65,8 @@ function newOrder(currentId, btnAddProductElement, newOrderMessageElement, befor
 
             // Pasado 5 segundos, volvemos el contenido del boton a como era anteriomente y ademas borramos el contenido del mensaje de alerta
             setTimeout(() => {
-                btnAddProductElement.innerHTML = beforeHTML;
+                // Aca mismo es donde restauramos el contenido del boton el cual habiamos previamente almacenado en la linea 14
+                btnAddProductElement.innerHTML = beforeHTMLContent;
                 if(newOrderMessageElement) {
                     newOrderMessageElement.textContent = ''
                 }

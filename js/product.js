@@ -33,9 +33,8 @@ window.addEventListener('DOMContentLoaded', () => {
                     </p>
                     <button
                     class="flex items-center justify-center gap-2 w-full bg-[var(--primary-color)] p-4 text-white text-lg cursor-pointer rounded-full" id="btn_add_product" data-id="${id}">
-                    <iconify-icon class="text-white" icon="line-md:plus" width="30" height="30">
-                    </iconify-icon>
-                        Pedir "${title}"
+                        <iconify-icon class="text-white" icon="line-md:plus" width="30" height="30">
+                        </iconify-icon> Pedir "${title}"
                     </button>
                     <small id="newOrder_message" class="mt-1 text-center text-base text-red-500"></small>
                     <div class="h-[1px] w-full bg-[var(--borders-color)]"></div>
