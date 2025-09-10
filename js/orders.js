@@ -177,7 +177,7 @@ function changeOrderStatus() {
 // Funcion para obtener la cantidad de pedidos realizados
 export function amountOrders() {
     const getOrders = JSON.parse(localStorage.getItem('orders'));
-    return getOrders?.orders.length;
+    return getOrders?.orders.length || 0;
 }
 
 // Si la pagina se encuentra en la ruta pedidos, entionces podemos ejecutar la funcion
