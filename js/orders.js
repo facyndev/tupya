@@ -181,7 +181,7 @@ export function amountOrders() {
 }
 
 // Si la pagina se encuentra en la ruta pedidos, entionces podemos ejecutar la funcion
-if (location.pathname == "/pages/pedidos.html") {
+if (location.pathname.endsWith('pedidos.html')) {
     loadOrders()
 
     changeOrderStatus()
