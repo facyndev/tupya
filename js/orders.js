@@ -132,7 +132,7 @@ function loadOrders() {
                 <button
                     id="btn_canceled"
                     data-id="${order.id}"
-                    class="cursor-pointer py-3 px-4 rounded-xl text-[var(--primary-color)] bg-[var(--low-tone-color)] transition-all hover:bg-[var(--primary-color)] hover:text-[var(--text-color)] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:bg-[var(--low-tone-color)] disabled:hover:text-[var(--primary-color)]"
+                    class="cursor-pointer py-3 px-4 rounded-xl text-[var(--primary-color)] bg-[var(--low-tone-color)] transition-all hover:bg-[var(--primary-color)] hover:text-[var(--text-color)]"
                     >
                     Cancelar
                 </button>
@@ -150,12 +150,20 @@ function loadOrders() {
             const orderExist = getOrders.orders.find((order) => order.id.toString() === currentId.toString())
             if (orderExist && orderExist.status !== 'delivered') {
                 orderExist.status = 'canceled';
-
                 localStorage.setItem('orders', JSON.stringify(getOrders));
             }
             loadOrders();
         })
+        getOrders.orders.forEach((elemento)=> {
+            if(elemento.status === 'delivered'){
+                el.disabled=true;
+                el.classList.add("hover:cursor-not-allowed");
+                el.classList.remove("hover:bg-[var(--primary-color)]")
+                el.classList.remove("hover:text-[var(--text-color)]")
+            }})
+    
     })
+    
 }
 
 // Esta funcion cambia el estado de un pedido en proceso a entregado
