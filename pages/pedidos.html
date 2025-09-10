@@ -30,9 +30,11 @@
         </ul>
       </div>
       <div class="flex items-center gap-2">
-        <a class="h-12 flex items-center justify-center py-2" href="./pedidos.html">
-          <iconify-icon class="text-white cursor-pointer" icon="solar:bag-3-linear" width="32"
-            height="32"></iconify-icon>
+        <a class="h-12 flex items-center justify-center py-2 relative" href="./pedidos.html">
+          <iconify-icon class="text-white cursor-pointer" icon="solar:bag-3-linear" width="32" height="32">
+          </iconify-icon>
+          <span class="rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/4 text-xs text-white"
+            id="amount_orders">0</span>
         </a>
         <button
           class="h-12 flex items-center justify-center cursor-pointer py-2 px-4 rounded-full bg-[var(--low-tone-color)] max-mobile:hidden"
@@ -47,7 +49,8 @@
         </button>
       </div>
 
-      <div id="mobile_menu" class="fixed top-0 right-0 w-64 h-full bg-[var(--low-tone-color)] flex flex-col items-start justify-between gap-4 p-4 z-40 rounded-l-xl transition-all translate-x-full mobile:translate-x-full">
+      <div id="mobile_menu"
+        class="fixed top-0 right-0 w-64 h-full bg-[var(--low-tone-color)] flex flex-col items-start justify-between gap-4 p-4 z-40 rounded-l-xl transition-all translate-x-full mobile:translate-x-full">
         <button class="text-black absolute top-4 left-4 text-xl" id="btn_menu_close">
           <iconify-icon icon="formkit:arrowright" width="48" height="48"></iconify-icon>
         </button>
@@ -55,14 +58,14 @@
           <button
             class="h-12 flex items-center justify-center cursor-pointer py-2 px-4 rounded-full bg-[var(--text-color)]"
             id="btn_theme">
-            <iconify-icon class="text-white transition-all duration-400" icon="tdesign:moon-filled" width="22" height="22"
-              id="icon_dark"></iconify-icon>
-            <iconify-icon class="text-black opacity-0 invisible transition-all duration-400" icon="bi:sun-fill" width="22"
-              height="22" id="icon_light"></iconify-icon>
+            <iconify-icon class="text-white transition-all duration-400" icon="tdesign:moon-filled" width="22"
+              height="22" id="icon_dark"></iconify-icon>
+            <iconify-icon class="text-black opacity-0 invisible transition-all duration-400" icon="bi:sun-fill"
+              width="22" height="22" id="icon_light"></iconify-icon>
           </button>
           <ul class="flex flex-col items-start gap-2 text-black text-lg">
             <li>
-              <a href="../index.html" >Inicio</a>
+              <a href="../index.html">Inicio</a>
             </li>
             <li>
               <a href="./products.html">Productos</a>
@@ -102,48 +105,7 @@
           </button>
         </div>
       </div>
-      <div class="flex-col w-full flex rounded-2xl gap-3 bg-[var(--bg-color-secondary)] text-[var(--text-color)]">
-        <div class="w-full flex items-center justify-between py-3 px-5">
-          <div class="flex items-center gap-2">
-            <img src="../assets/images/1.png" alt="Nombre de la comida" width="64" height="64" />
-            <div class="flex-col justify-between">
-              <h3 class="text-base">Burrito x 2</h3>
-              <span class="text-sm text-[var(--text-color-secondary)]">En Proceso</span>
-            </div>
-          </div>
-          <button
-            class="cursor-pointer py-3 px-4 rounded-xl text-[var(--primary-color)] bg-[var(--low-tone-color)] transition-all hover:bg-[var(--primary-color)] hover:text-[var(--text-color)]">
-            Cancelar
-          </button>
-        </div>
-        <div class="w-full flex items-center justify-between py-3 px-5">
-          <div class="flex items-center gap-2">
-            <img src="../assets/images/2.png" alt="Nombre de la comida" width="64" height="64" />
-            <div class="flex-col justify-between">
-              <h3 class="text-base">Empanadas x 3</h3>
-              <span class="text-sm text-red-400">Cancelado</span>
-            </div>
-          </div>
-          <button
-            class="cursor-not-allowed py-3 px-4 rounded-xl text-[var(--primary-color)] bg-[var(--low-tone-color)] disabled:opacity-70"
-            disabled>
-            Cancelar
-          </button>
-        </div>
-        <div class="w-full flex items-center justify-between py-3 px-5">
-          <div class="flex items-center gap-2">
-            <img src="../assets/images/4.png" alt="Nombre de la comida" width="64" height="64" />
-            <div class="flex-col justify-between">
-              <h3 class="text-base">Empanadas x 3</h3>
-              <span class="text-sm text-green-600">Entregado</span>
-            </div>
-          </div>
-          <button
-            class="cursor-not-allowed py-3 px-4 rounded-xl text-[var(--primary-color)] bg-[var(--low-tone-color)] disabled:opacity-70"
-            disabled>
-            Cancelar
-          </button>
-        </div>
+      <div class="flex-col w-full flex rounded-2xl bg-[var(--bg-color-secondary)] text-[var(--text-color)]" id="orders_list">
       </div>
     </section>
   </main>
@@ -163,7 +125,8 @@
       }
     }
   </script>
-  <script src="../js/main.js"></script>
+  <script src="../js/main.js" type="module"></script>
+  <script src="../js/orders.js" type="module"></script>
   <script src="../js/filter.js"></script>
 </body>
 

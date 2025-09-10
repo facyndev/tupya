@@ -28,12 +28,15 @@ function newOrder(currentId, btnAddProductElement, newOrderMessageElement, befor
              * de su ID devuelve un array con un unico elemento, lo que nos obligar a tener que 
              * seleccionar su indice.
             */
-            const { idMeal: id, strMeal: title } = food[0];
+            const { idMeal: id, strMeal: title, strMealThumb: image } = food[0];
 
             const getOrders = JSON.parse(localStorage.getItem('orders'));
             const newOrderObject = {
                 "id": id,
                 "title": title,
+                "date": new Date(),
+                "status": "in_process",
+                "image": image,
                 "amount": 1
             }
 
@@ -57,7 +60,7 @@ function newOrder(currentId, btnAddProductElement, newOrderMessageElement, befor
             }
 
             btnAddProductElement.innerHTML = '<iconify-icon icon="mingcute:check-fill" width="24" height="24"></iconify-icon> Pedido completado';
-            if(newOrderMessageElement) {
+            if (newOrderMessageElement) {
                 newOrderMessageElement.classList.remove('text-red-500');
                 newOrderMessageElement.classList.add('text-green-500');
                 newOrderMessageElement.textContent = `Tu nuevo pedido de "${title}" fue procesado correctamente.`
@@ -67,19 +70,121 @@ function newOrder(currentId, btnAddProductElement, newOrderMessageElement, befor
             setTimeout(() => {
                 // Aca mismo es donde restauramos el contenido del boton el cual habiamos previamente almacenado en la linea 14
                 btnAddProductElement.innerHTML = beforeHTMLContent;
-                if(newOrderMessageElement) {
+                if (newOrderMessageElement) {
                     newOrderMessageElement.textContent = ''
                 }
             }, 5000)
+
+            changeOrderStatus()
         })
         .catch((e) => {
             console.error("Ocurrio un error: ", e)
-            if(newOrderMessageElement) {
+            if (newOrderMessageElement) {
                 newOrderMessageElement.classList.remove("text-green-500");
                 newOrderMessageElement.classList.add("text-red-500");
                 newOrderMessageElement.textContent = 'Ocurrio un error al agregar la comida. Intente de nuevo mas tarde.'
             }
         })
+}
+
+function loadOrders() {
+    const ordersListElement = document.getElementById('orders_list');
+    const getOrders = JSON.parse(localStorage.getItem('orders'));
+
+    const getStatus = (status) => {
+        let actualStatus = null;
+        let className = '';
+        switch (status) {
+            case 'in_process':
+                actualStatus = 'En proceso';
+                className = 'text-[var(--text-color-secondary)]';
+                break;
+            case 'delivered':
+                actualStatus = 'Entregado';
+                className = 'text-[var(--text-color-success)]';
+                break;
+            case 'canceled':
+                actualStatus = 'Cancelado';
+                className = 'text-[var(--text-color-canceled)]';
+                break;
+
+        }
+        return {
+            actualStatus,
+            className
+        };
+    }
+
+    if (getOrders) {
+        // Borramos 
+        ordersListElement.innerHTML = '';
+        getOrders.orders.forEach((order) => {
+            const { actualStatus, className } = getStatus(order.status);
+            ordersListElement.innerHTML += `
+            <div class="w-full flex items-center justify-between py-3 px-5">
+                <div class="flex items-stretch gap-2">
+                    <img class="rounded-xl" src="${order.image}" alt="${order.title}" width="64" height="64" />
+                    <div class="flex flex-col justify-between">
+                    <h3 class="text-base">${order.title} x${order.amount}</h3>
+                    <span class="text-sm ${className}">${actualStatus}</span>
+                    </div>
+                </div>
+                <button
+                    id="btn_canceled"
+                    data-id="${order.id}"
+                    class="cursor-pointer py-3 px-4 rounded-xl text-[var(--primary-color)] bg-[var(--low-tone-color)] transition-all hover:bg-[var(--primary-color)] hover:text-[var(--text-color)] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:bg-[var(--low-tone-color)] disabled:hover:text-[var(--primary-color)]"
+                    >
+                    Cancelar
+                </button>
+            </div>
+            `
+        })
+    } else {
+        ordersListElement.innerHTML = '<p class="w-full mx-auto text-center text-xl font-medium text-[var(--text-color-secondary)]">No tenes ningun pedido realizado.</p>'
+    }
+
+    const btnCancelElements = document.querySelectorAll("#btn_canceled")
+    btnCancelElements.forEach((el) => {
+        el.addEventListener('click', (e) => {
+            const currentId = e.currentTarget.getAttribute('data-id');
+            const orderExist = getOrders.orders.find((order) => order.id.toString() === currentId.toString())
+            if (orderExist && orderExist.status !== 'delivered') {
+                orderExist.status = 'canceled';
+
+                localStorage.setItem('orders', JSON.stringify(getOrders));
+            }
+            loadOrders();
+        })
+    })
+}
+
+// Esta funcion cambia el estado de un pedido en proceso a entregado
+function changeOrderStatus() {
+    setTimeout(() => {
+        const getOrders = JSON.parse(localStorage.getItem('orders'));
+        if (getOrders) {
+            getOrders.orders.forEach((order) => {
+                if (order.status === 'in_process') {
+                    order.status = 'delivered';
+                    localStorage.setItem('orders', JSON.stringify(getOrders));
+                    loadOrders();
+                }
+            })
+        }
+    }, 15000)
+}
+
+// Funcion para obtener la cantidad de pedidos realizados
+export function amountOrders() {
+    const getOrders = JSON.parse(localStorage.getItem('orders'));
+    return getOrders?.orders.length;
+}
+
+// Si la pagina se encuentra en la ruta pedidos, entionces podemos ejecutar la funcion
+if (location.pathname == "/pages/pedidos.html") {
+    loadOrders()
+
+    changeOrderStatus()
 }
 
 

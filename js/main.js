@@ -1,3 +1,4 @@
+import  {amountOrders}  from "./orders.js";
 const htmlElement = document.getElementsByTagName("html")[0];
 const btnThemeElements = document.querySelectorAll("#btn_theme");
 const iconDarkElements = document.querySelectorAll("#icon_dark");
@@ -5,6 +6,7 @@ const iconLightElements = document.querySelectorAll("#icon_light");
 const btnMenu = document.getElementById("btn_menu");
 const mobileMenu = document.getElementById("mobile_menu");
 const btnMenuClose = document.getElementById("btn_menu_close");
+const amountOrdersElements = document.querySelectorAll('#amount_orders');
 
 // Botones para menu hamburgesa
 btnMenu.addEventListener("click", () => {
@@ -17,6 +19,11 @@ btnMenuClose.addEventListener("click", () => {
 // Cuando el contenido de nuestra pagina termine de cargar, ejecutamos lo que este dentro.
 window.addEventListener("DOMContentLoaded", () => {
   changeTheme();
+
+  // Actualizar la cantidad de pedidos en el boton del carrito
+  amountOrdersElements.forEach((el)=>{
+    el.textContent = amountOrders();
+  })
 });
 
 // Cambiar el tema mediante el boton

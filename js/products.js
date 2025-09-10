@@ -24,7 +24,7 @@ window.addEventListener("DOMContentLoaded", () => {
         updateFilters(foods);
       });
 
-      // Borrar contenido del input con un boton
+      // Borrar contenido del input de busqueda con un boton
       btnEraserElement.addEventListener('click', () => {
         params.set("search", "");
         updateFilters(foods)
