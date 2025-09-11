@@ -15,4 +15,10 @@ Tiene 3 paginas que consisten en: Inicio, Productos, Pedidos
 
 El proyecto obtiene información de [TheMealDB](https://www.themealdb.com) la cual es una API gratuita con gran cantidad de comidas/recetas con sus respectivos ingredientes e imagenes.
 
+## Capturas de Pantalla
+
+<img src="https://i.ibb.co/N6jf2TWy/Captura-Pedidos.png" alt="Captura-Pedidos" border="0">
+<img src="https://i.ibb.co/xqgP3mH6/Captura-Pedidos-Oscuro.png" alt="Captura-Pedidos-Oscuro" border="0">
+<img src="https://i.ibb.co/qF4WY8Kg/Captura-Prod.png" alt="Captura-Prod" border="0">
+<img src="https://i.ibb.co/svj5Ng4X/Captura-Prod-Oscuro.png" alt="Captura-Prod-Oscuro" border="0">
 
