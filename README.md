@@ -1,4 +1,4 @@
-![LOGO](https://facyndev.github.io/tupya/assets/images/LogoTUP.webp)
+<img src="https://facyndev.github.io/tupya/assets/images/LogoTUP.webp" alt="LOGO" width="100" height="100">
 
 ## ¿Qué es?
 
