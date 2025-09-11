@@ -154,17 +154,31 @@ function loadOrders() {
             }
             loadOrders();
         })
-        getOrders.orders.forEach((elemento)=> {
-            if(elemento.status === 'delivered'){
-                el.disabled=true;
-                el.classList.add("hover:cursor-not-allowed");
-                el.classList.remove("hover:bg-[var(--primary-color)]")
-                el.classList.remove("hover:text-[var(--text-color)]")
-            }})
-    
     })
-    
+    const deliverFilter= getOrders.orders.filter((element)=> element.status === 'delivered');
+    const canceledFilter= getOrders.orders.filter((element)=> element.status === 'canceled');
+    btnCancelElements.forEach((e)=>{
+        const buttonId = e.getAttribute('data-id');
+        const isDelivered = deliverFilter.some(element => `${element.id}` === buttonId);
+        const isCanceled= canceledFilter.some(element => `${element.id}` === buttonId);
+        if(isDelivered || isCanceled){
+            e.disabled=true;
+            e.classList.add("hover:cursor-not-allowed");
+            e.classList.add("opacity-[35%]");
+            e.classList.remove("hover:bg-[var(--primary-color)]")
+            e.classList.remove("hover:text-[var(--text-color)]")
+        }
+            else{
+                e.disabled=false;
+                e.classList.remove("hover:cursor-not-allowed");
+                e.classList.remove("opacity-[35%]");
+                e.classList.add("hover:bg-[var(--primary-color)]")
+                e.classList.add("hover:text-[var(--text-color)]")
+            }
+        })
+
 }
+
 
 // Esta funcion cambia el estado de un pedido en proceso a entregado
 function changeOrderStatus() {
