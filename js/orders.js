@@ -22,7 +22,7 @@ export function updateButtons() {
 }
 
 function getOrders() {
-  return JSON.parse(localStorage.getItem("orders")).orders || [];
+  return JSON.parse(localStorage.getItem("orders"))?.orders || [];
 }
 
 // Funcion para crear un nuevo pedido de una comida
@@ -164,48 +164,49 @@ export function loadOrders(orders) {
     ordersListElement.innerHTML = '<p class="w-full mx-auto text-center text-xl font-medium text-[var(--text-color-secondary)]">No se ha encontrado ningun pedido.</p>';
   }
 
-  // const btnCancelElements = document.querySelectorAll("#btn_canceled");
-  // btnCancelElements.forEach((el) => {
-  //   el.addEventListener("click", (e) => {
-  //     const currentId = e.currentTarget.getAttribute("data-id");
-  //     const orderExist = getOrders.orders.find(
-  //       (order) => order.id.toString() === currentId.toString()
-  //     );
-  //     if (orderExist && orderExist.status !== "delivered") {
-  //       orderExist.status = "canceled";
-  //       localStorage.setItem("orders", JSON.stringify(getOrders));
-  //     }
-  //     loadOrders();
-  //   });
-  // });
-  // const deliverFilter = getOrders?.orders.filter(
-  //   (element) => element.status === "delivered"
-  // );
-  // const canceledFilter = getOrders?.orders.filter(
-  //   (element) => element.status === "canceled"
-  // );
-  // btnCancelElements.forEach((e) => {
-  //   const buttonId = e.getAttribute("data-id");
-  //   const isDelivered = deliverFilter.some(
-  //     (element) => `${element.id}` === buttonId
-  //   );
-  //   const isCanceled = canceledFilter.some(
-  //     (element) => `${element.id}` === buttonId
-  //   );
-  //   if (isDelivered || isCanceled) {
-  //     e.disabled = true;
-  //     e.classList.add("hover:cursor-not-allowed");
-  //     e.classList.add("opacity-[35%]");
-  //     e.classList.remove("hover:bg-[var(--primary-color)]");
-  //     e.classList.remove("hover:text-[var(--text-color)]");
-  //   } else {
-  //     e.disabled = false;
-  //     e.classList.remove("hover:cursor-not-allowed");
-  //     e.classList.remove("opacity-[35%]");
-  //     e.classList.add("hover:bg-[var(--primary-color)]");
-  //     e.classList.add("hover:text-[var(--text-color)]");
-  //   }
-  // });
+  const btnCancelElements = document.querySelectorAll("#btn_canceled");
+  btnCancelElements.forEach((el) => {
+    el.addEventListener("click", (e) => {
+      const currentId = e.currentTarget.getAttribute("data-id");
+      const orders = getOrders();
+      const orderExist = orders?.find(
+        (order) => order.id.toString() === currentId.toString()
+      );
+      if (orderExist && orderExist.status !== "delivered" && orderExist.status !== "canceled") {
+        orderExist.status = "canceled";
+        localStorage.setItem("orders", JSON.stringify({ "orders": orders }));
+      }
+      loadOrders(getOrders());
+    });
+  });
+  const deliverFilter = orders.filter(
+    (element) => element.status === "delivered"
+  );
+  const canceledFilter = orders.filter(
+    (element) => element.status === "canceled"
+  );
+  btnCancelElements.forEach((e) => {
+    const buttonId = e.getAttribute("data-id");
+    const isDelivered = deliverFilter.some(
+      (element) => `${element.id}` === buttonId
+    );
+    const isCanceled = canceledFilter.some(
+      (element) => `${element.id}` === buttonId
+    );
+    if (isDelivered || isCanceled) {
+      e.disabled = true;
+      e.classList.add("hover:cursor-not-allowed");
+      e.classList.add("opacity-[35%]");
+      e.classList.remove("hover:bg-[var(--primary-color)]");
+      e.classList.remove("hover:text-[var(--text-color)]");
+    } else {
+      e.disabled = false;
+      e.classList.remove("hover:cursor-not-allowed");
+      e.classList.remove("opacity-[35%]");
+      e.classList.add("hover:bg-[var(--primary-color)]");
+      e.classList.add("hover:text-[var(--text-color)]");
+    }
+  });
 }
 
 // Esta funcion cambia el estado de un pedido en proceso a entregado
@@ -235,7 +236,7 @@ if (location.pathname.endsWith("pedidos.html")) {
   const filteredOrders = updateFilters(getOrders());
 
   loadOrders(filteredOrders);
-  
+
   const filterButtonsElements = document.querySelectorAll('#btn_filter')
   filterButtonsElements.forEach((el) => {
     el.addEventListener('click', (e) => {
