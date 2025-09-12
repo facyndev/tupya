@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../styles/style.css" />
   <title>Productos | TupYa</title>
 </head>
+
 <body>
   <header class="w-full py-2">
     <nav class="w-[90%] mx-auto flex items-center px-4 justify-between rounded-2xl bg-[var(--primary-color)]">
@@ -33,7 +34,7 @@
         <a class="h-12 flex items-center justify-center py-2 relative" href="./pedidos.html">
           <iconify-icon class="text-white cursor-pointer" icon="solar:bag-3-linear" width="32"
             height="32"></iconify-icon>
-            <span class="rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/4 text-xs text-white"
+          <span class="rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/4 text-xs text-white"
             id="amount_orders">0</span>
         </a>
         <button
@@ -89,11 +90,14 @@
               <iconify-icon class="text-[var(--text-color-secondary)]" icon="iconamoon:search-bold" width="24"
                 height="24"></iconify-icon>
               <input class="w-full p-4 outline-none bg-transparent" type="search" placeholder="Busqueda..."
+                data-filter-type="strMeal" data-filter-value=""
                 id="search_product" />
               <iconify-icon class="text-[var(--text-color-secondary)] cursor-pointer"
                 icon="material-symbols:close-rounded" width="24" height="24" id="btn_eraser"></iconify-icon>
             </div>
+
           </div>
+
           <div class="flex flex-col max-tablet:flex-row gap-4">
             <div class="max-tablet:flex-1">
               <span class="text-[var(--text-color-secondary)] text-sm">Categorias</span>
@@ -101,25 +105,29 @@
                 <div class="flex items-center gap-2 select-none">
                   <input
                     class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-solid border-[var(--low-tone-color)] cursor-pointer transition-all checked:bg-[var(--primary-color)]"
-                    type="checkbox" id="breakfast" filter data-filter-type="category" data-filter-value="breakfast" />
+                    type="checkbox" id="breakfast" data-filter-type="strCategory" data-filter-value="breakfast"
+                    data-filter-active="false" />
                   <label class="cursor-pointer hover:opacity-70" for="breakfast">Desayuno</label>
                 </div>
                 <div class="flex items-center gap-2 select-none">
                   <input
                     class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all checked:bg-[var(--primary-color)]"
-                    type="checkbox" id="vegan" filter data-filter-type="category" data-filter-value="vegan" />
+                    type="checkbox" id="vegan" data-filter-type="strCategory" data-filter-value="vegan"
+                    data-filter-active="false" />
                   <label class="cursor-pointer hover:opacity-70" for="vegan">Vegano</label>
                 </div>
                 <div class="flex items-center gap-2 select-none">
                   <input
                     class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all checked:bg-[var(--primary-color)]"
-                    type="checkbox" id="vegetarian" filter data-filter-type="category" data-filter-value="vegetarian" />
+                    type="checkbox" id="vegetarian" data-filter-type="strCategory" data-filter-value="vegetarian"
+                    data-filter-active="false" />
                   <label class="cursor-pointer hover:opacity-70" for="vegetarian">Vegetariano</label>
                 </div>
                 <div class="flex items-center gap-2 select-none">
                   <input
                     class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all checked:bg-[var(--primary-color)]"
-                    type="checkbox" id="beef" filter data-filter-type="category" data-filter-value="beef" />
+                    type="checkbox" id="beef" data-filter-type="strCategory" data-filter-value="beef"
+                    data-filter-active="false" />
                   <label class="cursor-pointer hover:opacity-70" for="beef">Carne</label>
                 </div>
               </div>
@@ -130,19 +138,22 @@
                 <div class="flex items-center gap-2 select-none">
                   <input
                     class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all checked:bg-[var(--primary-color)]"
-                    type="checkbox" id="argentina" filter data-filter-type="area" data-filter-value="argentina" />
+                    type="checkbox" id="argentina" data-filter-type="strArea" data-filter-value="Argentina"
+                    data-filter-active="false" />
                   <label class="cursor-pointer hover:opacity-70" for="argentina">Argentina</label>
                 </div>
                 <div class="flex items-center gap-2 select-none">
                   <input
                     class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all checked:bg-[var(--primary-color)]"
-                    type="checkbox" id="chile" filter data-filter-type="area" data-filter-value="chile" />
+                    type="checkbox" id="chile" data-filter-type="strArea" data-filter-value="Chile"
+                    data-filter-active="false" />
                   <label class="cursor-pointer hover:opacity-70" for="chile">Chile</label>
                 </div>
                 <div class="flex items-center gap-2 select-none">
                   <input
                     class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all checked:bg-[var(--primary-color)]"
-                    type="checkbox" id="españa" filter data-filter-type="area" data-filter-value="españa" />
+                    type="checkbox" id="españa" data-filter-type="strArea" data-filter-value="España"
+                    data-filter-active="false" />
                   <label class="cursor-pointer hover:opacity-70" for="españa">España</label>
                 </div>
               </div>
@@ -150,6 +161,7 @@
           </div>
         </form>
       </section>
+
       <section class="flex flex-1 flex-col-reverse items-center gap-2 max-tablet:ml-0" id="products_list"></section>
     </div>
   </main>

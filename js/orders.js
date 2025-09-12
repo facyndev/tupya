@@ -1,5 +1,5 @@
+import updateFilters from "./filter.js";
 import { getFood } from "./product.js";
-
 // Funcion para añadir los eventos a los botones
 export function updateButtons() {
   const btnAddProductButtons = Array.from(
@@ -21,13 +21,12 @@ export function updateButtons() {
   });
 }
 
+function getOrders() {
+  return JSON.parse(localStorage.getItem("orders")).orders || [];
+}
+
 // Funcion para crear un nuevo pedido de una comida
-function newOrder(
-  currentId,
-  btnAddProductElement,
-  newOrderMessageElement,
-  beforeHTMLContent
-) {
+function newOrder(currentId, btnAddProductElement, newOrderMessageElement, beforeHTMLContent) {
   getFood(Number(currentId))
     .then((food) => {
       /**
@@ -107,9 +106,8 @@ function newOrder(
     });
 }
 
-export function loadOrders(filterParams) {
+export function loadOrders(orders) {
   const ordersListElement = document.getElementById("orders_list");
-  const getOrders = JSON.parse(localStorage.getItem("orders"));
 
   const getStatus = (status) => {
     let actualStatus = null;
@@ -133,33 +131,29 @@ export function loadOrders(filterParams) {
       className,
     };
   };
-
-  if (getOrders) {
+  if (orders.length != 0) {
     // Borramos el contenido anterior para que no se superponga cuando se cambie de estado el pedido
-    ordersListElement.innerHTML = "";
-    let filteredOrders = [];
-    if (filterParams.length) {
-      filteredOrders = getOrders?.orders.filter((order) =>
-        filterParams.some((params) => params === order.status)
-      );
-    } else {
-      filteredOrders = getOrders.orders;
-    }
-    filteredOrders.forEach((order) => {
+    ordersListElement.innerHTML = '';
+
+    orders.forEach((order) => {
       const { actualStatus, className } = getStatus(order.status);
       ordersListElement.innerHTML += `
-            <div class="w-full flex items-center justify-between py-3 px-5">
-                <div class="flex items-stretch gap-2">
-                    <img class="rounded-xl" src="${order.image}" alt="${order.title}" width="64" height="64" />
+            <div class="w-full flex items-center justify-between p-3 max-mobile:flex-col">
+                <div class="flex items-stretch gap-2 h-12">
+                    <img class="rounded-xl" src="${order.image}" alt="${order.title
+        }" />
                     <div class="flex flex-col justify-between">
-                    <h3 class="text-base">${order.title} x${order.amount}</h3>
+                    <h3 class="text-base">${order.title} x${order.amount
+        } &bull; <span class="text-xs text-[var(--text-color-secondary)]">${new Date(
+          order.date
+        ).toLocaleString("es-AR")}</span></h3>
                     <span class="text-sm ${className}">${actualStatus}</span>
                     </div>
                 </div>
                 <button
                     id="btn_canceled"
                     data-id="${order.id}"
-                    class="cursor-pointer py-3 px-4 rounded-xl text-[var(--primary-color)] bg-[var(--low-tone-color)] transition-all hover:bg-[var(--primary-color)] hover:text-[var(--text-color)]"
+                    class="h-12 cursor-pointer py-3 px-4 rounded-xl text-[var(--primary-color)] bg-[var(--low-tone-color)] transition-all hover:bg-[var(--primary-color)] hover:text-[var(--text-color)]"
                     >
                     Cancelar
                 </button>
@@ -167,52 +161,51 @@ export function loadOrders(filterParams) {
             `;
     });
   } else {
-    ordersListElement.innerHTML =
-      '<p class="w-full mx-auto text-center text-xl font-medium text-[var(--text-color-secondary)]">No tenes ningun pedido realizado.</p>';
+    ordersListElement.innerHTML = '<p class="w-full mx-auto text-center text-xl font-medium text-[var(--text-color-secondary)]">No se ha encontrado ningun pedido.</p>';
   }
 
-  const btnCancelElements = document.querySelectorAll("#btn_canceled");
-  btnCancelElements.forEach((el) => {
-    el.addEventListener("click", (e) => {
-      const currentId = e.currentTarget.getAttribute("data-id");
-      const orderExist = getOrders.orders.find(
-        (order) => order.id.toString() === currentId.toString()
-      );
-      if (orderExist && orderExist.status !== "delivered") {
-        orderExist.status = "canceled";
-        localStorage.setItem("orders", JSON.stringify(getOrders));
-      }
-      loadOrders([]);
-    });
-  });
-  const deliverFilter = getOrders?.orders.filter(
-    (element) => element.status === "delivered"
-  );
-  const canceledFilter = getOrders?.orders.filter(
-    (element) => element.status === "canceled"
-  );
-  btnCancelElements.forEach((e) => {
-    const buttonId = e.getAttribute("data-id");
-    const isDelivered = deliverFilter.some(
-      (element) => `${element.id}` === buttonId
-    );
-    const isCanceled = canceledFilter.some(
-      (element) => `${element.id}` === buttonId
-    );
-    if (isDelivered || isCanceled) {
-      e.disabled = true;
-      e.classList.add("hover:cursor-not-allowed");
-      e.classList.add("opacity-[35%]");
-      e.classList.remove("hover:bg-[var(--primary-color)]");
-      e.classList.remove("hover:text-[var(--text-color)]");
-    } else {
-      e.disabled = false;
-      e.classList.remove("hover:cursor-not-allowed");
-      e.classList.remove("opacity-[35%]");
-      e.classList.add("hover:bg-[var(--primary-color)]");
-      e.classList.add("hover:text-[var(--text-color)]");
-    }
-  });
+  // const btnCancelElements = document.querySelectorAll("#btn_canceled");
+  // btnCancelElements.forEach((el) => {
+  //   el.addEventListener("click", (e) => {
+  //     const currentId = e.currentTarget.getAttribute("data-id");
+  //     const orderExist = getOrders.orders.find(
+  //       (order) => order.id.toString() === currentId.toString()
+  //     );
+  //     if (orderExist && orderExist.status !== "delivered") {
+  //       orderExist.status = "canceled";
+  //       localStorage.setItem("orders", JSON.stringify(getOrders));
+  //     }
+  //     loadOrders();
+  //   });
+  // });
+  // const deliverFilter = getOrders?.orders.filter(
+  //   (element) => element.status === "delivered"
+  // );
+  // const canceledFilter = getOrders?.orders.filter(
+  //   (element) => element.status === "canceled"
+  // );
+  // btnCancelElements.forEach((e) => {
+  //   const buttonId = e.getAttribute("data-id");
+  //   const isDelivered = deliverFilter.some(
+  //     (element) => `${element.id}` === buttonId
+  //   );
+  //   const isCanceled = canceledFilter.some(
+  //     (element) => `${element.id}` === buttonId
+  //   );
+  //   if (isDelivered || isCanceled) {
+  //     e.disabled = true;
+  //     e.classList.add("hover:cursor-not-allowed");
+  //     e.classList.add("opacity-[35%]");
+  //     e.classList.remove("hover:bg-[var(--primary-color)]");
+  //     e.classList.remove("hover:text-[var(--text-color)]");
+  //   } else {
+  //     e.disabled = false;
+  //     e.classList.remove("hover:cursor-not-allowed");
+  //     e.classList.remove("opacity-[35%]");
+  //     e.classList.add("hover:bg-[var(--primary-color)]");
+  //     e.classList.add("hover:text-[var(--text-color)]");
+  //   }
+  // });
 }
 
 // Esta funcion cambia el estado de un pedido en proceso a entregado
@@ -239,7 +232,21 @@ export function amountOrders() {
 
 // Si la pagina se encuentra en la ruta pedidos, entionces podemos ejecutar la funcion
 if (location.pathname.endsWith("pedidos.html")) {
-  loadOrders([]);
+  const filteredOrders = updateFilters(getOrders());
+
+  loadOrders(filteredOrders);
+  
+  const filterButtonsElements = document.querySelectorAll('#btn_filter')
+  filterButtonsElements.forEach((el) => {
+    el.addEventListener('click', (e) => {
+      const currentElement = e.currentTarget;
+      const filterType = currentElement.getAttribute('data-filter-type');
+      const filterValue = currentElement.getAttribute('data-filter-value');
+
+      const filteredOrders = updateFilters(getOrders(), { type: filterType, value: filterValue })
+      loadOrders(filteredOrders)
+    })
+  })
 
   changeOrderStatus();
 }

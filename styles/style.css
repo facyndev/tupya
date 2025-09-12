@@ -80,6 +80,11 @@ input[type="search"]::-webkit-search-cancel-button {
   display: none;
 }
 
+button[data-filter-active="true"], input[data-filter-active="true"] {
+  background: var(--primary-color);
+  color: white;
+}
+
 /* Estilizar la barra de scroll */
 ::-webkit-scrollbar {
   width: 3px;

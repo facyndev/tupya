@@ -1,48 +1,48 @@
-import { loadOrders } from "./orders.js";
-
-// Filtrado de los pedidos
 const pageUrl = new URL(window.location);
-const params = new URLSearchParams(window.location.search);
+const pageParams = new URLSearchParams(window.location.search);
 
-// Obtenemos todos los botones que coincidan con la ID.
-const filterButtonsElements = document.querySelectorAll("#filterButton");
-
-filterButtonsElements.forEach((el) => {
-  // A cada elemento la añadimos un evento
-  el.addEventListener("click", (e) => {
-    const filterType = e.currentTarget.getAttribute("data-filter");
-    params.getAll("filter").includes(filterType)
-      ? params.delete("filter", filterType)
-      : params.append("filter", filterType);
-
-    updateFilters();
-  });
-});
-
-function updateFilters() {
-  const actualValues = params.getAll("filter");
-
-  // Creamos la url que posteriormente sera que la reemplza
-  const newUrl = `${pageUrl.pathname}?${params.toString()}${pageUrl.hash}`;
-
-  // Reemplazamos la URL actua con los nuevos parametros de busqueda
-  history.replaceState(null, "", newUrl);
-
-  filterButtonsElements.forEach((el) => {
-    if (actualValues.includes(el.attributes["data-filter"].value)) {
-      el.classList.remove("bg-[var(--bg-color-secondary)]");
-      el.classList.add("bg-[var(--primary-color)]", "text-white");
+export default function updateFilters(listToFilter, param) {
+  /**
+   * Si la funcion recibe el parametro param realizamos la logica de filtrado,
+   * de lo contrario, devolvemos su lista original
+   */
+  if(param) {
+    // Actualizacion de parametros de busqueda y de la URL
+    const getParamsFirst = pageParams.getAll(param.type.toString());
+    if (getParamsFirst.includes(param.value.toString())) {
+      pageParams.delete(param.type.toString(), param.value.toString())
     } else {
-      el.classList.add("bg-[var(--bg-color-secondary)]");
-      el.classList.remove("bg-[var(--primary-color)]", "text-white");
+      pageParams.append(param.type.toString(), param.value.toString());
     }
-  });
-
-  const filterParams = params.getAll("filter");
-  loadOrders(filterParams);
+    const newUrl = `${pageUrl.pathname}?${pageParams.toString()}`;
+    history.replaceState(null, '', newUrl);
+  
+    // Creacion de lista de parametros para tener un filtrado dinamico
+    const getParamsSecond = pageParams.getAll(param.type.toString());
+    const paramsList = []
+    pageParams.entries().forEach((param) => {
+      paramsList.push({
+        type: param[0],
+        value: param[1]
+      })
+    })
+  
+    // Actualizacion de botones que coincidan con filtros
+    const btnFilterElements = document.querySelectorAll("#btn_filter");
+    btnFilterElements.forEach((el) => {
+      const filterValue = el.getAttribute("data-filter-value");
+      if(getParamsSecond.includes(filterValue)) {
+        el.setAttribute("data-filter-active", "true")
+      } else {
+        el.setAttribute("data-filter-active", "false")
+      }
+    })
+  
+    // Filtrado
+    const filtered = listToFilter.filter((item) => paramsList.some(({ type, value }) => item[type].toString().toLowerCase() === value.toString().toLowerCase()))
+    
+    return getParamsSecond.length !== 0 ? filtered : listToFilter;
+  } else {
+    return listToFilter;
+  }
 }
-
-// Cuando termine de cargar todo el contenido de la pagina, actualiza los filtros
-window.addEventListener("DOMContentLoaded", () => {
-  updateFilters();
-});

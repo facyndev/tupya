@@ -1,4 +1,4 @@
-import  {amountOrders}  from "./orders.js";
+import { amountOrders } from "./orders.js";
 const htmlElement = document.getElementsByTagName("html")[0];
 const btnThemeElements = document.querySelectorAll("#btn_theme");
 const iconDarkElements = document.querySelectorAll("#icon_dark");
@@ -21,7 +21,7 @@ window.addEventListener("DOMContentLoaded", () => {
   changeTheme();
 
   // Actualizar la cantidad de pedidos en el boton del carrito
-  amountOrdersElements.forEach((el)=>{
+  amountOrdersElements.forEach((el) => {
     el.textContent = amountOrders();
   })
 });
@@ -38,7 +38,7 @@ btnThemeElements.forEach(el => {
       localStorage.removeItem("theme");
       htmlElement.removeAttribute("data-theme");
     }
-  
+
     changeTheme();
   })
 })
@@ -61,7 +61,8 @@ function changeTheme() {
       el.classList.remove("opacity-0", "invisible");
       el.classList.add("opacity-100", "visible");
     })
-    iconLightElements.forEach((el) => {;
+    iconLightElements.forEach((el) => {
+      ;
       el.classList.add("opacity-0", "invisible");
       el.classList.remove("opacity-100", "visible");
     })
