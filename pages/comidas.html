@@ -23,7 +23,7 @@
             <a href="../index.html">Inicio</a>
           </li>
           <li>
-            <a href="./products.html">Productos</a>
+            <a href="./comidas.html">Productos</a>
           </li>
           <li>
             <a href="../index.html#contact_form">Contacto</a>
@@ -69,7 +69,7 @@
               <a href="../index.html">Inicio</a>
             </li>
             <li>
-              <a href="./products.html">Productos</a>
+              <a href="./comidas.html">Productos</a>
             </li>
             <li>
               <a href="../index.html#contact_form">Contacto</a>
@@ -90,69 +90,77 @@
               <iconify-icon class="text-[var(--text-color-secondary)]" icon="iconamoon:search-bold" width="24"
                 height="24"></iconify-icon>
               <input class="w-full p-4 outline-none bg-transparent" type="search" placeholder="Busqueda..."
-                data-filter-type="strMeal" data-filter-value=""
-                id="search_product" />
+                data-filter data-filter-type="strMeal" id="search_product" />
               <iconify-icon class="text-[var(--text-color-secondary)] cursor-pointer"
-                icon="material-symbols:close-rounded" width="24" height="24" id="btn_eraser"></iconify-icon>
+                icon="material-symbols:close-rounded" width="24" height="24" id="btn_eraser"
+                data-filter-type="strMeal"></iconify-icon>
             </div>
 
           </div>
 
           <div class="flex flex-col max-tablet:flex-row gap-4">
+            <!-- Categorias -->
             <div class="max-tablet:flex-1">
               <span class="text-[var(--text-color-secondary)] text-sm">Categorias</span>
               <div class="flex items-start flex-col gap-2 mb-6 mt-2">
                 <div class="flex items-center gap-2 select-none">
                   <input
-                    class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-solid border-[var(--low-tone-color)] cursor-pointer transition-all checked:bg-[var(--primary-color)]"
-                    type="checkbox" id="breakfast" data-filter-type="strCategory" data-filter-value="breakfast"
-                    data-filter-active="false" />
+                    class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-solid border-[var(--low-tone-color)] cursor-pointer transition-all "
+                    type="checkbox" id="breakfast" data-filter data-filter-type="strCategory"
+                    data-filter-value="breakfast" data-filter-active="false" />
                   <label class="cursor-pointer hover:opacity-70" for="breakfast">Desayuno</label>
                 </div>
+
                 <div class="flex items-center gap-2 select-none">
                   <input
-                    class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all checked:bg-[var(--primary-color)]"
-                    type="checkbox" id="vegan" data-filter-type="strCategory" data-filter-value="vegan"
+                    class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all"
+                    type="checkbox" id="vegan" data-filter data-filter-type="strCategory" data-filter-value="vegan"
                     data-filter-active="false" />
                   <label class="cursor-pointer hover:opacity-70" for="vegan">Vegano</label>
                 </div>
+
                 <div class="flex items-center gap-2 select-none">
                   <input
-                    class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all checked:bg-[var(--primary-color)]"
-                    type="checkbox" id="vegetarian" data-filter-type="strCategory" data-filter-value="vegetarian"
-                    data-filter-active="false" />
+                    class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all"
+                    type="checkbox" id="vegetarian" data-filter data-filter-type="strCategory"
+                    data-filter-value="vegetarian" data-filter-active="false" />
                   <label class="cursor-pointer hover:opacity-70" for="vegetarian">Vegetariano</label>
                 </div>
+
                 <div class="flex items-center gap-2 select-none">
                   <input
-                    class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all checked:bg-[var(--primary-color)]"
-                    type="checkbox" id="beef" data-filter-type="strCategory" data-filter-value="beef"
+                    class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all"
+                    type="checkbox" id="beef" data-filter data-filter-type="strCategory" data-filter-value="beef"
                     data-filter-active="false" />
                   <label class="cursor-pointer hover:opacity-70" for="beef">Carne</label>
                 </div>
               </div>
             </div>
+
+            <!-- Regiones -->
             <div class="max-tablet flex-1">
               <span class="text-[var(--text-color-secondary)] text-sm">Region</span>
               <div class="flex items-start flex-col gap-2 mt-2">
                 <div class="flex items-center gap-2 select-none">
                   <input
-                    class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all checked:bg-[var(--primary-color)]"
-                    type="checkbox" id="argentina" data-filter-type="strArea" data-filter-value="Argentina"
+                    class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all"
+                    type="checkbox" id="argentina" data-filter data-filter-type="strArea" data-filter-value="Argentina"
                     data-filter-active="false" />
                   <label class="cursor-pointer hover:opacity-70" for="argentina">Argentina</label>
                 </div>
+
                 <div class="flex items-center gap-2 select-none">
                   <input
-                    class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all checked:bg-[var(--primary-color)]"
-                    type="checkbox" id="chile" data-filter-type="strArea" data-filter-value="Chile"
+                    class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all"
+                    type="checkbox" id="chile" data-filter data-filter-type="strArea" data-filter-value="Chile"
                     data-filter-active="false" />
                   <label class="cursor-pointer hover:opacity-70" for="chile">Chile</label>
                 </div>
+
                 <div class="flex items-center gap-2 select-none">
                   <input
-                    class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all checked:bg-[var(--primary-color)]"
-                    type="checkbox" id="españa" data-filter-type="strArea" data-filter-value="España"
+                    class="appearance-none w-4 h-4 bg-[var(--low-tone-color)] rounded-sm border-3 border-[var(--low-tone-color)] cursor-pointer transition-all"
+                    type="checkbox" id="españa" data-filter data-filter-type="strArea" data-filter-value="España"
                     data-filter-active="false" />
                   <label class="cursor-pointer hover:opacity-70" for="españa">España</label>
                 </div>
@@ -183,7 +191,7 @@
   }
 </script>
 <script src="../js/main.js" type="module"></script>
-<script src="../js/products.js" type="module"></script>
+<script src="../js/foods.js" type="module"></script>
 <script src="../js/orders.js" type="module"></script>
 
 </html>
