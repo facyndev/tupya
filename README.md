@@ -13,7 +13,8 @@ Tiene 4 paginas que consisten en: Inicio, Lista de productos, Visualizacion en d
 
 ## Tecnologías
 
-`HTML` - `CSS & TailwindCSS` - `JavaScript`
+- `HTML` - `CSS & TailwindCSS` - `JavaScript`: Uso general en el proyecto.
+- [`SweetAlert`](https://sweetalert2.github.io/): Alertas tras un envio existoso del formulario de contacto que se encuentra en la pagina de **Inicio**.
 
 El proyecto obtiene información de [TheMealDB](https://www.themealdb.com) la cual es una API gratuita con gran cantidad de comidas/recetas con sus respectivos ingredientes e imagenes.
 
@@ -30,5 +31,6 @@ El proyecto obtiene información de [TheMealDB](https://www.themealdb.com) la cu
 <img src="https://i.ibb.co/xqgP3mH6/Captura-Pedidos-Oscuro.png" alt="Captura-Pedidos-Oscuro" border="0">
 <img src="https://i.ibb.co/qF4WY8Kg/Captura-Prod.png" alt="Captura-Prod" border="0">
 <img src="https://i.ibb.co/svj5Ng4X/Captura-Prod-Oscuro.png" alt="Captura-Prod-Oscuro" border="0">
+
 
 
