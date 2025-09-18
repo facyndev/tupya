@@ -18,7 +18,7 @@ Tiene 4 paginas que consisten en: Inicio, Lista de productos, Visualizacion en d
 
 El proyecto obtiene información de [TheMealDB](https://www.themealdb.com) la cual es una API gratuita con gran cantidad de comidas/recetas con sus respectivos ingredientes e imagenes.
 
-# Funcionalidades implementadas
+## Funcionalidades implementadas
 - Peticion a API (La API a la cual se le realiza las peticiones se encuentra detallada en la sección de arriba.)
 - Almacenado de datos en el localStorage (Listado de productos, listado de pedidos y tema)
 - Filtrado en tiempo real + parametros de busqueda en la URL para persistencia de filtros al recargar.
@@ -31,6 +31,7 @@ El proyecto obtiene información de [TheMealDB](https://www.themealdb.com) la cu
 <img src="https://i.ibb.co/xqgP3mH6/Captura-Pedidos-Oscuro.png" alt="Captura-Pedidos-Oscuro" border="0">
 <img src="https://i.ibb.co/qF4WY8Kg/Captura-Prod.png" alt="Captura-Prod" border="0">
 <img src="https://i.ibb.co/svj5Ng4X/Captura-Prod-Oscuro.png" alt="Captura-Prod-Oscuro" border="0">
+
 
 
 
