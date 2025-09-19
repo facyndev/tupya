@@ -1,4 +1,4 @@
-const fieldsElements = Array.from(document.querySelectorAll('input'))
+const fieldsElements = Array.from(document.querySelectorAll('[data-input]'))
 const emailErrorMessageElement = document.getElementById('error_message_email');
 const zipCodeErrorMessageElement = document.getElementById('error_message_zipCode');
 const contactFormElement = document.getElementById('contact_form');
@@ -42,7 +42,7 @@ let invalidField = false;
 
 function checkSend(fields, isEmail, isZipCode) {
   // Verificamos si encontramos algun campo vacio
-  const emptyField = fields.some((el) => el.value == "");
+  const emptyField = fields.some((el) => el.value === "");
   const emailField = fields.find((el) => el.getAttribute("name") === 'email');
   const zipCodeField = fields.find((el) => el.getAttribute("name") === 'zip_code');
 
@@ -84,6 +84,10 @@ function checkSend(fields, isEmail, isZipCode) {
 contactFormElement.addEventListener("submit", (e) => {
   e.preventDefault();
 
+  // Restablecer fomulario
+  contactFormElement.reset();
+
+  // Alerta de envio
   Swal.fire({
     title: 'Enviado',
     text: '¡Su mensaje ha sido enviado correctamente! En breve nos contactaremos con usted',
