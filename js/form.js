@@ -10,7 +10,7 @@ const regularExpressions = {
   zipCode: /^\d+$/
 }
 
-// Mediante una API de Paises, obtenemos una lista que posteriormente se carga en un SELECT MENU
+// Mediante una API de Paises, obtenemos una lista que posteriormente se carga en un menu de seleccion
 async function loadCountries() {
   try {
     const res = await fetch("https://restcountries.com/v3.1/all?fields=name")
@@ -24,7 +24,8 @@ async function loadCountries() {
   }
 }
 
-window.addEventListener('DOMContentLoaded', () => {
+// Cuando todsos los elementos terminen de cargar, cargamos los paises al menu de seleccion
+window.addEventListener('load', () => {
   loadCountries();
 })
 
@@ -90,5 +91,6 @@ contactFormElement.addEventListener("submit", (e) => {
     confirmButtonText: 'OK'
   })
 })
+
 
 
