@@ -34,6 +34,9 @@ El proyecto obtiene información de [TheMealDB](https://www.themealdb.com) la cu
 <img src="https://i.ibb.co/qF4WY8Kg/Captura-Prod.png" alt="Captura-Prod" border="0">
 <img src="https://i.ibb.co/svj5Ng4X/Captura-Prod-Oscuro.png" alt="Captura-Prod-Oscuro" border="0">
 
+## Integrantes
+
+[Facundo Grieco](https://github.com/facyndev) - [Ezequiel Hansen](https://github.com/Ezequiel-Hansen) - [Manuel Sedoff](https://github.com/M4nu3lS) - [Derian Alaba](https://github.com/deriannnnN)
 
 
 
