@@ -27,6 +27,14 @@ El proyecto obtiene información de [TheMealDB](https://www.themealdb.com) la cu
 - Tema oscuro/claro con persistencia.
 - Formulario de contacto con validación en tiempo real mediante el uso de expresiones regulares (para el correo electronico y codigo postal) y campos vacios.
 
+## Instrucciones de ejecución
+
+- **1er paso**: Desde tu PC dirigite a una ruta en la que queres que se almacene **TupYa** (Podes realizarlo desde la terminal de tu sistema operativo con el comando `cd "ruta"`, *EJ:* `cd "C:\Users\facundo\OneDrive\Escritorio"`)
+- **2do paso**: Clonar este repositorio en tu PC con [Git](https://git-scm.com/downloads) mediante el uso del siguiente comando `git clone https://github.com/facyndev/tupya.git`
+- **3er paso**: Dentro de la carpeta **tupya** seleccionar cualquier archivo con la extension `.html`, hacer doble clic para abrirla en el navegador (generalmente es abierta por el navegador, de lo contrario abrilo mendiante **Clic derecho en el archivo** > **Abrir con** > **Navegador que uses**) y listo, ya podras navegar y utilizar **TupYa** de manera local.
+
+Si deseas ver la pagina en la nube, podes hacerlo mediante el siguiente enlace: [TupYa](https://facyndev.github.io/tupya/index.html)
+
 ## Capturas de Pantalla
 
 <img src="https://i.ibb.co/N6jf2TWy/Captura-Pedidos.png" alt="Captura-Pedidos" border="0">
@@ -37,6 +45,7 @@ El proyecto obtiene información de [TheMealDB](https://www.themealdb.com) la cu
 ## Integrantes
 
 [Facundo Grieco](https://github.com/facyndev) - [Ezequiel Hansen](https://github.com/Ezequiel-Hansen) - [Manuel Sedoff](https://github.com/M4nu3lS) - [Derian Alaba](https://github.com/deriannnnN)
+
 
 
 
