@@ -19,11 +19,12 @@ Tiene 4 paginas que consisten en: **inicio**, **lista de comidas**, **visualizac
 El proyecto obtiene información de [TheMealDB](https://www.themealdb.com) la cual es una API gratuita con gran cantidad de comidas/recetas con sus respectivos ingredientes e imagenes.
 
 ## Funcionalidades implementadas
-- Peticion a API (La API a la cual se le realiza las peticiones se encuentra detallada en la sección de arriba.)
-- Almacenado de datos en el localStorage (Listado de comidas, listado de pedidos y tema)
+- Peticion a [API de comidas](https://www.themealdb.com) (Todas estas comidas se encuentran listadas en la pagina **comidas**)
+- Peticion a [API de paises](https://restcountries.com/) (En la pagina de **inicio** se encuentra el formulario de contacto donde se muestra la carga de todos los paises en el menu de seleccion)
+- Almacenado de datos en el **localStorage** (Listado de comidas, listado de pedidos y tema)
 - Filtrado en tiempo real con **searchParams** (parametros de busqueda) en la URL para persistencia de filtros al recargar.
 - Tema oscuro/claro con persistencia.
-- Formulario de contacto con validación en tiempo real mediante el uso de expresiones regulares.
+- Formulario de contacto con validación en tiempo real mediante el uso de expresiones regulares (para el correo electronico y codigo postal) y campos vacios.
 
 ## Capturas de Pantalla
 
@@ -31,6 +32,7 @@ El proyecto obtiene información de [TheMealDB](https://www.themealdb.com) la cu
 <img src="https://i.ibb.co/xqgP3mH6/Captura-Pedidos-Oscuro.png" alt="Captura-Pedidos-Oscuro" border="0">
 <img src="https://i.ibb.co/qF4WY8Kg/Captura-Prod.png" alt="Captura-Prod" border="0">
 <img src="https://i.ibb.co/svj5Ng4X/Captura-Prod-Oscuro.png" alt="Captura-Prod-Oscuro" border="0">
+
 
 
 
