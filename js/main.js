@@ -8,7 +8,7 @@ const mobileMenu = document.getElementById("mobile_menu");
 const btnMenuClose = document.getElementById("btn_menu_close");
 const amountOrdersElements = document.querySelectorAll('#amount_orders');
 
-// Botones para menu hamburgesa
+// Botones para menu hamburguesa
 btnMenu.addEventListener("click", () => {
   mobileMenu.classList.toggle("translate-x-full");
 });
