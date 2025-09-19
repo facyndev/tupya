@@ -86,14 +86,14 @@ function newOrder(currentId, btnAddProductElement, newOrderMessageElement, befor
                 newOrderMessageElement.textContent = `Tu nuevo pedido de "${title}" fue procesado correctamente.`;
             }
 
-            // Pasado 5 segundos, volvemos el contenido del boton a como era anteriomente y ademas borramos el contenido del mensaje de alerta
+            // Pasado 2 segundos, volvemos el contenido del boton a como era anteriomente y ademas borramos el contenido del mensaje de alerta
             setTimeout(() => {
                 // Aca mismo es donde restauramos el contenido del boton el cual habiamos previamente almacenado en la linea 14
                 btnAddProductElement.innerHTML = beforeHTMLContent;
                 if (newOrderMessageElement) {
                     newOrderMessageElement.textContent = "";
                 }
-            }, 5000);
+            }, 2000);
 
             changeOrderStatus();
         })
