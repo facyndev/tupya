@@ -9,7 +9,7 @@
 ## ¿De que trata?
 
 **TupYa** es una tienda de comida en linea que te permite realizar multiples pedidos.
-Tiene 4 paginas que consisten en: **inicio**, **lista de productos**, **visualizacion en detalle de un producto** y **lista de pedidos**.
+Tiene 4 paginas que consisten en: **inicio**, **lista de comidas**, **visualizacion en detalle de una comida** y **lista de pedidos**.
 
 ## Tecnologías
 
@@ -20,7 +20,7 @@ El proyecto obtiene información de [TheMealDB](https://www.themealdb.com) la cu
 
 ## Funcionalidades implementadas
 - Peticion a API (La API a la cual se le realiza las peticiones se encuentra detallada en la sección de arriba.)
-- Almacenado de datos en el localStorage (Listado de productos, listado de pedidos y tema)
+- Almacenado de datos en el localStorage (Listado de comidas, listado de pedidos y tema)
 - Filtrado en tiempo real con **searchParams** (parametros de busqueda) en la URL para persistencia de filtros al recargar.
 - Tema oscuro/claro con persistencia.
 - Formulario de contacto con validación en tiempo real mediante el uso de expresiones regulares.
@@ -31,6 +31,7 @@ El proyecto obtiene información de [TheMealDB](https://www.themealdb.com) la cu
 <img src="https://i.ibb.co/xqgP3mH6/Captura-Pedidos-Oscuro.png" alt="Captura-Pedidos-Oscuro" border="0">
 <img src="https://i.ibb.co/qF4WY8Kg/Captura-Prod.png" alt="Captura-Prod" border="0">
 <img src="https://i.ibb.co/svj5Ng4X/Captura-Prod-Oscuro.png" alt="Captura-Prod-Oscuro" border="0">
+
 
 
 
