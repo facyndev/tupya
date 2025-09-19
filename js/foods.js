@@ -10,7 +10,7 @@ window.addEventListener("load", () => {
 
   getFoods()
     .then((foods) => {
-      document.title = 'Productos | TupYa';
+      document.title = 'Comidas | TupYa';
 
       const filteredFoods = updateFilters(foods)
       loadFoods(filteredFoods)
