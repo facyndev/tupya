@@ -44,7 +44,8 @@ Si deseas ver la pagina en la nube, podes hacerlo mediante el siguiente enlace: 
 
 ## Integrantes
 
-[Facundo Grieco](https://github.com/facyndev) - [Ezequiel Hansen](https://github.com/Ezequiel-Hansen) - [Manuel Sedoff](https://github.com/M4nu3lS) - [Derian Alaba](https://github.com/deriannnnN)
+[Facundo Grieco](https://github.com/facyndev) - [Ezequiel Hansen](https://github.com/Ezequiel-Hansen) - [Manuel Sedoff](https://github.com/M4nu3lS) - [Derian Alava](https://github.com/deriannnnN)
+
 
 
 
